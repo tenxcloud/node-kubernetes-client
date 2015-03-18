@@ -1,6 +1,6 @@
 {
   "name": "node-kubernetes-client",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Kubernetes client of Node.js",
   "main": "index.js",
   "scripts": {
@@ -32,6 +32,7 @@
   "devDependencies": {
     "jshinthelper": "git+ssh://git@github.com:tenxcloud/jshinthelper.git#0.5.0",
     "mocha": "~1.12.0",
+    "should": "2.1.1",
     "mockery": "~1.4.0"
   },
   "homepage": "https://github.com/tenxcloud/node-kubernetes-client",
