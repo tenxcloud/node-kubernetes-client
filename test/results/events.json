@@ -1,0 +1,126 @@
+[
+    {
+        "kind": "EventList",
+        "creationTimestamp": null,
+        "selfLink": "/api/v1beta2/events?namespace=",
+        "resourceVersion": 23495,
+        "apiVersion": "v1beta2",
+        "items": [
+            {
+                "id": "mysql.13cc355d8bb08824",
+                "uid": "2bf152ae-cc6f-11e4-acdd-52546d69a10d",
+                "creationTimestamp": "2015-03-17T14:30:57+08:00",
+                "selfLink": "/api/v1beta2/events/mysql.13cc355d8bb08824?namespace=default",
+                "resourceVersion": 957,
+                "namespace": "default",
+                "involvedObject": {
+                    "kind": "Pod",
+                    "namespace": "default",
+                    "name": "mysql",
+                    "uid": "2b8483c1-cc6f-11e4-acdd-52546d69a10d",
+                    "apiVersion": "v1beta1",
+                    "resourceVersion": "954"
+                },
+                "reason": "scheduled",
+                "message": "Successfully assigned mysql to 10.80.197.181",
+                "source": "scheduler",
+                "timestamp": "2015-03-17T14:30:57+08:00",
+                "firstTimestamp": "2015-03-17T14:30:57+08:00",
+                "lastTimestamp": "2015-03-17T14:30:57+08:00",
+                "count": 1
+            },
+            {
+                "id": "ubuntu.13cc2e6574a719ba",
+                "uid": "54ac3911-cc5d-11e4-acdd-52546d69a10d",
+                "creationTimestamp": "2015-03-17T12:23:15+08:00",
+                "selfLink": "/api/v1beta2/events/ubuntu.13cc2e6574a719ba?namespace=default",
+                "resourceVersion": 202,
+                "namespace": "default",
+                "involvedObject": {
+                    "kind": "Pod",
+                    "namespace": "default",
+                    "name": "ubuntu",
+                    "uid": "54349640-cc5d-11e4-acdd-52546d69a10d",
+                    "apiVersion": "v1beta1",
+                    "resourceVersion": "199"
+                },
+                "reason": "scheduled",
+                "message": "Successfully assigned ubuntu to 10.80.197.181",
+                "source": "scheduler",
+                "timestamp": "2015-03-17T12:23:15+08:00",
+                "firstTimestamp": "2015-03-17T12:23:15+08:00",
+                "lastTimestamp": "2015-03-17T12:23:15+08:00",
+                "count": 1
+            },
+            {
+                "id": "ubuntu2.13cca1cc1bb6264e",
+                "uid": "c1dcde2c-cd84-11e4-89a6-52546d69a10d",
+                "creationTimestamp": "2015-03-18T23:37:59+08:00",
+                "selfLink": "/api/v1beta2/events/ubuntu2.13cca1cc1bb6264e?namespace=default",
+                "resourceVersion": 14769,
+                "namespace": "default",
+                "involvedObject": {
+                    "kind": "Pod",
+                    "namespace": "default",
+                    "name": "ubuntu2",
+                    "uid": "c1b740a7-cd84-11e4-89a6-52546d69a10d",
+                    "apiVersion": "v1beta1",
+                    "resourceVersion": "14766"
+                },
+                "reason": "scheduled",
+                "message": "Successfully assigned ubuntu2 to 10.80.188.27",
+                "source": "scheduler",
+                "timestamp": "2015-03-18T23:37:59+08:00",
+                "firstTimestamp": "2015-03-18T23:37:59+08:00",
+                "lastTimestamp": "2015-03-18T23:37:59+08:00",
+                "count": 1
+            },
+            {
+                "id": "ubuntu3.13cca042234d6e07",
+                "uid": "d14c8495-cd80-11e4-89a6-52546d69a10d",
+                "creationTimestamp": "2015-03-18T23:09:47+08:00",
+                "selfLink": "/api/v1beta2/events/ubuntu3.13cca042234d6e07?namespace=default",
+                "resourceVersion": 14433,
+                "namespace": "default",
+                "involvedObject": {
+                    "kind": "Pod",
+                    "namespace": "default",
+                    "name": "ubuntu3",
+                    "uid": "d0d5d8eb-cd80-11e4-89a6-52546d69a10d",
+                    "apiVersion": "v1beta1",
+                    "resourceVersion": "14430"
+                },
+                "reason": "scheduled",
+                "message": "Successfully assigned ubuntu3 to 10.80.188.27",
+                "source": "scheduler",
+                "timestamp": "2015-03-18T23:09:47+08:00",
+                "firstTimestamp": "2015-03-18T23:09:47+08:00",
+                "lastTimestamp": "2015-03-18T23:09:47+08:00",
+                "count": 1
+            },
+            {
+                "id": "ubuntu4.13cca117332e66dd",
+                "uid": "f2bce6f5-cd82-11e4-89a6-52546d69a10d",
+                "creationTimestamp": "2015-03-18T23:25:02+08:00",
+                "selfLink": "/api/v1beta2/events/ubuntu4.13cca117332e66dd?namespace=default",
+                "resourceVersion": 14613,
+                "namespace": "default",
+                "involvedObject": {
+                    "kind": "Pod",
+                    "namespace": "default",
+                    "name": "ubuntu4",
+                    "uid": "f290ab48-cd82-11e4-89a6-52546d69a10d",
+                    "apiVersion": "v1beta1",
+                    "resourceVersion": "14610"
+                },
+                "reason": "scheduled",
+                "message": "Successfully assigned ubuntu4 to 10.80.197.181",
+                "source": "scheduler",
+                "timestamp": "2015-03-18T23:25:02+08:00",
+                "firstTimestamp": "2015-03-18T23:25:02+08:00",
+                "lastTimestamp": "2015-03-18T23:25:02+08:00",
+                "count": 1
+            }
+        ]
+    }
+]

@@ -1,0 +1,86 @@
+{
+    "kind": "Pod",
+    "id": "mysql",
+    "uid": "2b8483c1-cc6f-11e4-acdd-52546d69a10d",
+    "creationTimestamp": "2015-03-17T14:30:57+08:00",
+    "selfLink": "/api/v1beta2/pods/mysql?namespace=default",
+    "resourceVersion": 954,
+    "apiVersion": "v1beta2",
+    "namespace": "default",
+    "labels": {
+        "name": "mysql"
+    },
+    "desiredState": {
+        "manifest": {
+            "version": "v1beta2",
+            "id": "",
+            "volumes": null,
+            "containers": [
+                {
+                    "name": "mysql",
+                    "image": "tutum/mysql:latest",
+                    "ports": [
+                        {
+                            "containerPort": 3306,
+                            "protocol": "TCP"
+                        }
+                    ],
+                    "env": [
+                        {
+                            "name": "MYSQL_ROOT_PASSWORD",
+                            "value": "tenxcloud"
+                        }
+                    ],
+                    "resources": {
+                        "limits": {
+                            "cpu": "0.1"
+                        }
+                    },
+                    "cpu": 100,
+                    "terminationMessagePath": "/dev/termination-log",
+                    "imagePullPolicy": "PullAlways",
+                    "capabilities": {}
+                }
+            ],
+            "restartPolicy": {
+                "always": {}
+            },
+            "dnsPolicy": "ClusterFirst"
+        }
+    },
+    "currentState": {
+        "manifest": {
+            "version": "",
+            "id": "",
+            "volumes": null,
+            "containers": null,
+            "restartPolicy": {}
+        },
+        "status": "Running",
+        "Condition": [
+            {
+                "kind": "Ready",
+                "status": "None"
+            }
+        ],
+        "host": "10.80.197.181",
+        "hostIP": "10.80.197.181",
+        "podIP": "10.0.51.3",
+        "info": {
+            "mysql": {
+                "state": {
+                    "termination": {
+                        "exitCode": 0,
+                        "startedAt": "2015-03-17T06:37:04Z",
+                        "finishedAt": "2015-03-18T10:25:50Z"
+                    }
+                },
+                "ready": false,
+                "restartCount": 0,
+                "image": "tutum/mysql:latest",
+                "imageID": "docker://26c0c52dc79af8acf07a18cd1693bfae91926f496ee4d1c1dbe29a014394b7c0",
+                "containerID": "docker://dc2e178ad3f3cf97444323909d3032ca514ffb156f028a1243c9b5e547efaec7"
+            }
+        }
+    }
+}

@@ -17,8 +17,7 @@ Interaction is accomplished via `client.<endpoint>.<method>`. (see examples belo
 ## Create client
 
 Authentication can be done via either token or login. If, however, the token
-expires, the login info will be used to acquire a new token. Hence, long
-running processes should consider the use of email/password.
+expires, the login info will be used to acquire a new token.
 
 ```js
 var Client = require('node-kubernetes-client');
@@ -30,18 +29,29 @@ var client = new Client({
 });
 ```
 
-## Getting from endpoints
+## Getting from pods
 
-Paging is accomplished automatically. For example, a request for `endpoints` will
-return all endpoints, not just those returned on the first page.
+Paging is accomplished automatically. For example, a request for `pods` will
+return all pods, not just those returned on the first page.
 
-For example, to get all endpoints:
+For example, to get all pods:
 
 ```js
-client.endpoints.get(function (err, endpoints) {
-    console.log('endpoints:', endpoints);
+client.pods.get(function (err, pods) {
+    console.log('pods:', pods);
 });
 ```
+
+# How to run the test cases
+## install mocha
+```js
+  npm install mocha
+```
+## run testcase
+```js
+  mocha test-pods.js
+```
+The results will be output to test/results/ directory with formatted JSON.
 
 # Roadmap
 

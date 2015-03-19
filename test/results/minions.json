@@ -1,0 +1,62 @@
+[
+    {
+        "kind": "MinionList",
+        "creationTimestamp": null,
+        "selfLink": "/api/v1beta2/minions",
+        "resourceVersion": 23473,
+        "apiVersion": "v1beta2",
+        "items": [
+            {
+                "id": "10.80.188.27",
+                "uid": "f796d9c3-cd56-11e4-a8fe-52546d69a10d",
+                "creationTimestamp": "2015-03-18T18:10:13+08:00",
+                "selfLink": "/api/v1beta2/minions/10.80.188.27",
+                "resourceVersion": 23472,
+                "hostIP": "10.80.188.27",
+                "resources": {},
+                "status": {
+                    "conditions": [
+                        {
+                            "kind": "Ready",
+                            "status": "Full",
+                            "lastProbeTime": "2015-03-19T12:11:48+08:00",
+                            "lastTransitionTime": "2015-03-18T18:33:06+08:00",
+                            "reason": "Node health check succeeded: kubelet /healthz endpoint returns ok"
+                        }
+                    ]
+                },
+                "labels": {
+                    "name": "slave2"
+                }
+            },
+            {
+                "id": "10.80.197.181",
+                "uid": "25341315-cbf2-11e4-b376-52546d69a10d",
+                "creationTimestamp": "2015-03-16T23:35:59+08:00",
+                "selfLink": "/api/v1beta2/minions/10.80.197.181",
+                "resourceVersion": 23473,
+                "hostIP": "10.80.197.181",
+                "resources": {
+                    "capacity": {
+                        "cpu": "1",
+                        "memory": 3221225472
+                    }
+                },
+                "status": {
+                    "conditions": [
+                        {
+                            "kind": "Ready",
+                            "status": "Full",
+                            "lastProbeTime": "2015-03-19T12:11:48+08:00",
+                            "lastTransitionTime": "2015-03-16T23:35:59+08:00",
+                            "reason": "Node health check succeeded: kubelet /healthz endpoint returns ok"
+                        }
+                    ]
+                },
+                "labels": {
+                    "name": "slave1"
+                }
+            }
+        ]
+    }
+]

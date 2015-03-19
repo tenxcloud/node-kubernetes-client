@@ -1,0 +1,43 @@
+[
+    {
+        "kind": "EndpointsList",
+        "creationTimestamp": null,
+        "selfLink": "/api/v1beta2/endpoints?namespace=",
+        "resourceVersion": 23467,
+        "apiVersion": "v1beta2",
+        "items": [
+            {
+                "id": "kubernetes",
+                "creationTimestamp": null,
+                "selfLink": "/api/v1beta2/endpoints/kubernetes?namespace=default",
+                "resourceVersion": 11234,
+                "namespace": "default",
+                "protocol": "TCP",
+                "endpoints": [
+                    "0.0.0.0:6443"
+                ]
+            },
+            {
+                "id": "kubernetes-ro",
+                "creationTimestamp": null,
+                "selfLink": "/api/v1beta2/endpoints/kubernetes-ro?namespace=default",
+                "resourceVersion": 11233,
+                "namespace": "default",
+                "protocol": "TCP",
+                "endpoints": [
+                    "0.0.0.0:7080"
+                ]
+            },
+            {
+                "id": "mysql",
+                "uid": "6ec26d86-cc70-11e4-acdd-52546d69a10d",
+                "creationTimestamp": "2015-03-17T14:39:59+08:00",
+                "selfLink": "/api/v1beta2/endpoints/mysql?namespace=default",
+                "resourceVersion": 11235,
+                "namespace": "default",
+                "protocol": "TCP",
+                "endpoints": null
+            }
+        ]
+    }
+]

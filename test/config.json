@@ -1,30 +1,8 @@
 {
-  "baseUrl" : "http://localhost:3000",
-  "adapter" : {
-    "adapterName" : "employee",
-    "adapterClass" : "entities",
-    "adapterEntity" : "Employee"
-  },
-  "filter" : {
-    "query": { "location": "Durham", "building": "500" },
-    "pagination": [ { "start": "1", "end": "50" } ]
-  },
-  "emptyFilter" : {
-    "query": {},
-    "pagination": [ { "start": "1", "end": "50" } ]
-  },
-  "filterAndPagination" : {
-    "query": { "location": "Durham", "building": "500", "idOffset" : "70701", "scoreOffset" : "659" },
-    "pagination": [ { "start": "1", "end": "50" } ]
-  },
-  "paginationOnly" : {
-    "query": { "idOffset" : "70701", "scoreOffset" : "659" },
-    "pagination": [ { "start": "1", "end": "50" } ]
-  },
-  "entityId" : "500971897",
-  "path" : "/Employee",
-  "collectionAuth" : null,
-    "existingAdapter" : "employee",
-    "nonExistAdapter" : "employee0",
-    "entity" : "Employee"
+  "k8s": {
+    "protocol": "https",
+    "host": "119.254.101.149:6443",
+    "version": "v1beta2",
+    "token": "BazzyRsm0xytyym7NIsrbcvVrjR01JGC"
+  }
 }

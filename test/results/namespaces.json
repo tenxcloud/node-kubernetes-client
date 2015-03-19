@@ -1,0 +1,20 @@
+[
+    {
+        "kind": "NamespaceList",
+        "creationTimestamp": null,
+        "selfLink": "/api/v1beta2/namespaces",
+        "resourceVersion": 23561,
+        "apiVersion": "v1beta2",
+        "items": [
+            {
+                "id": "default",
+                "uid": "e5940659-cbee-11e4-94ea-52546d69a10d",
+                "creationTimestamp": "2015-03-16T23:12:44+08:00",
+                "selfLink": "/api/v1beta2/namespaces/default",
+                "resourceVersion": 5,
+                "spec": {},
+                "status": {}
+            }
+        ]
+    }
+]

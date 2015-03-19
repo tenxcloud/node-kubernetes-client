@@ -10,6 +10,7 @@
 
 var should = require('should');
 var assert = require('assert');
+var fs = require('fs');
 var Client = require('../index');
 
 describe('Test k8s pods API', function() {
@@ -17,19 +18,15 @@ describe('Test k8s pods API', function() {
   var client;
   var pods = [];
   beforeEach(function() {
-    var configPath = require('path').resolve(__dirname, 'config.json');
-    client = new Client({
-        protocol: 'https',
-        host: '119.254.101.149:6443',
-        version: 'v1beta1',
-        token: 'BazzyRsm0xytyym7NIsrbcvVrjR01JGC'
-    });
+    client = new Client(require('./config.json').k8s);
   });
 
   it('should return the pods list', function(done) {
     client.pods.get(function (err, podsArr) {
       if (!err) {
         console.log('pods: ' + JSON.stringify(podsArr));
+        // output results
+        fs.writeFile("results/pods.json", JSON.stringify(podsArr, null, 4));
         assert(podsArr instanceof Array);
         pods = podsArr[0].items;
         done();
@@ -42,9 +39,11 @@ describe('Test k8s pods API', function() {
 
   it('should return the pod with specified id', function(done) {
     var podId = pods[0].id;
-    client.pods.get(podId, function (err, podsArr) {
+    client.pods.get(podId, function (err, pod) {
       if (!err) {
-        console.log('pods ' + JSON.stringify(podsArr));
+        console.log('pods ' + JSON.stringify(pod));
+        // output results
+        fs.writeFile("results/pod.json", JSON.stringify(pod, null, 4));
         done();
       } else {
         console.log(err);

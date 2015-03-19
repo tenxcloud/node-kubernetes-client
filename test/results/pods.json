@@ -1,0 +1,329 @@
+[
+    {
+        "kind": "PodList",
+        "creationTimestamp": null,
+        "selfLink": "/api/v1beta2/pods?namespace=",
+        "resourceVersion": 23473,
+        "apiVersion": "v1beta2",
+        "items": [
+            {
+                "id": "mysql",
+                "uid": "2b8483c1-cc6f-11e4-acdd-52546d69a10d",
+                "creationTimestamp": "2015-03-17T14:30:57+08:00",
+                "selfLink": "/api/v1beta2/pods/mysql?namespace=default",
+                "resourceVersion": 954,
+                "namespace": "default",
+                "labels": {
+                    "name": "mysql"
+                },
+                "desiredState": {
+                    "manifest": {
+                        "version": "v1beta2",
+                        "id": "",
+                        "volumes": null,
+                        "containers": [
+                            {
+                                "name": "mysql",
+                                "image": "tutum/mysql:latest",
+                                "ports": [
+                                    {
+                                        "containerPort": 3306,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "env": [
+                                    {
+                                        "name": "MYSQL_ROOT_PASSWORD",
+                                        "value": "tenxcloud"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "0.1"
+                                    }
+                                },
+                                "cpu": 100,
+                                "terminationMessagePath": "/dev/termination-log",
+                                "imagePullPolicy": "PullAlways",
+                                "capabilities": {}
+                            }
+                        ],
+                        "restartPolicy": {
+                            "always": {}
+                        },
+                        "dnsPolicy": "ClusterFirst"
+                    }
+                },
+                "currentState": {
+                    "manifest": {
+                        "version": "",
+                        "id": "",
+                        "volumes": null,
+                        "containers": null,
+                        "restartPolicy": {}
+                    },
+                    "status": "Running",
+                    "Condition": [
+                        {
+                            "kind": "Ready",
+                            "status": "None"
+                        }
+                    ],
+                    "host": "10.80.197.181",
+                    "hostIP": "10.80.197.181",
+                    "podIP": "10.0.51.3",
+                    "info": {
+                        "mysql": {
+                            "state": {
+                                "termination": {
+                                    "exitCode": 0,
+                                    "startedAt": "2015-03-17T06:37:04Z",
+                                    "finishedAt": "2015-03-18T10:25:50Z"
+                                }
+                            },
+                            "ready": false,
+                            "restartCount": 0,
+                            "image": "tutum/mysql:latest",
+                            "imageID": "docker://26c0c52dc79af8acf07a18cd1693bfae91926f496ee4d1c1dbe29a014394b7c0",
+                            "containerID": "docker://dc2e178ad3f3cf97444323909d3032ca514ffb156f028a1243c9b5e547efaec7"
+                        }
+                    }
+                }
+            },
+            {
+                "id": "ubuntu",
+                "uid": "54349640-cc5d-11e4-acdd-52546d69a10d",
+                "creationTimestamp": "2015-03-17T12:23:14+08:00",
+                "selfLink": "/api/v1beta2/pods/ubuntu?namespace=default",
+                "resourceVersion": 199,
+                "namespace": "default",
+                "labels": {
+                    "name": "ubuntu"
+                },
+                "desiredState": {
+                    "manifest": {
+                        "version": "v1beta2",
+                        "id": "",
+                        "volumes": null,
+                        "containers": [
+                            {
+                                "name": "ubuntu",
+                                "image": "tutum/ubuntu:trusty",
+                                "ports": [
+                                    {
+                                        "hostPort": 34567,
+                                        "containerPort": 22,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "env": [
+                                    {
+                                        "name": "ROOT_PASS",
+                                        "value": "tenxcloud"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "imagePullPolicy": "PullIfNotPresent",
+                                "capabilities": {}
+                            }
+                        ],
+                        "restartPolicy": {
+                            "always": {}
+                        },
+                        "dnsPolicy": "ClusterFirst"
+                    }
+                },
+                "currentState": {
+                    "manifest": {
+                        "version": "",
+                        "id": "",
+                        "volumes": null,
+                        "containers": null,
+                        "restartPolicy": {}
+                    },
+                    "status": "Running",
+                    "Condition": [
+                        {
+                            "kind": "Ready",
+                            "status": "Full"
+                        }
+                    ],
+                    "host": "10.80.197.181",
+                    "hostIP": "10.80.197.181",
+                    "podIP": "10.0.51.2",
+                    "info": {
+                        "ubuntu": {
+                            "state": {
+                                "running": {
+                                    "startedAt": "2015-03-18T10:32:56Z"
+                                }
+                            },
+                            "ready": true,
+                            "restartCount": 1,
+                            "image": "tutum/ubuntu:trusty",
+                            "imageID": "docker://dd925861a6d8e28a860a942295a5775e47f1e48b86e2728fb0460df8c392bffc",
+                            "containerID": "docker://1a5a865364d93de07f784893f5fc9c5072e588273c001fa8c27b00696a312396"
+                        }
+                    }
+                }
+            },
+            {
+                "id": "ubuntu3",
+                "uid": "d0d5d8eb-cd80-11e4-89a6-52546d69a10d",
+                "creationTimestamp": "2015-03-18T23:09:47+08:00",
+                "selfLink": "/api/v1beta2/pods/ubuntu3?namespace=default",
+                "resourceVersion": 14431,
+                "namespace": "default",
+                "labels": {
+                    "name": "ubuntu3"
+                },
+                "desiredState": {
+                    "manifest": {
+                        "version": "v1beta2",
+                        "id": "",
+                        "volumes": null,
+                        "containers": [
+                            {
+                                "name": "ubuntu3",
+                                "image": "tutum/ubuntu:trusty",
+                                "ports": [
+                                    {
+                                        "hostPort": 34568,
+                                        "containerPort": 22,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "env": [
+                                    {
+                                        "name": "ROOT_PASS",
+                                        "value": "tenxcloud"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "imagePullPolicy": "PullIfNotPresent",
+                                "capabilities": {}
+                            }
+                        ],
+                        "restartPolicy": {
+                            "always": {}
+                        },
+                        "dnsPolicy": "ClusterFirst"
+                    }
+                },
+                "currentState": {
+                    "manifest": {
+                        "version": "",
+                        "id": "",
+                        "volumes": null,
+                        "containers": null,
+                        "restartPolicy": {}
+                    },
+                    "status": "Running",
+                    "Condition": [
+                        {
+                            "kind": "Ready",
+                            "status": "Full"
+                        }
+                    ],
+                    "host": "10.80.188.27",
+                    "hostIP": "10.80.188.27",
+                    "podIP": "10.0.56.2",
+                    "info": {
+                        "ubuntu3": {
+                            "state": {
+                                "running": {
+                                    "startedAt": "2015-03-18T15:38:14Z"
+                                }
+                            },
+                            "ready": true,
+                            "restartCount": 0,
+                            "image": "tutum/ubuntu:trusty",
+                            "imageID": "docker://dd925861a6d8e28a860a942295a5775e47f1e48b86e2728fb0460df8c392bffc",
+                            "containerID": "docker://99ead6ace193128881b1ef32a1d60ab13290003bf42473dc785df7cc3d206954"
+                        }
+                    }
+                }
+            },
+            {
+                "id": "ubuntu4",
+                "uid": "f290ab48-cd82-11e4-89a6-52546d69a10d",
+                "creationTimestamp": "2015-03-18T23:25:02+08:00",
+                "selfLink": "/api/v1beta2/pods/ubuntu4?namespace=default",
+                "resourceVersion": 14611,
+                "namespace": "default",
+                "labels": {
+                    "name": "ubuntu4"
+                },
+                "desiredState": {
+                    "manifest": {
+                        "version": "v1beta2",
+                        "id": "",
+                        "volumes": null,
+                        "containers": [
+                            {
+                                "name": "ubuntu4",
+                                "image": "tutum/ubuntu:trusty",
+                                "ports": [
+                                    {
+                                        "hostPort": 34588,
+                                        "containerPort": 22,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "env": [
+                                    {
+                                        "name": "ROOT_PASS",
+                                        "value": "tenxcloud"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "imagePullPolicy": "PullIfNotPresent",
+                                "capabilities": {}
+                            }
+                        ],
+                        "restartPolicy": {
+                            "always": {}
+                        },
+                        "dnsPolicy": "ClusterFirst"
+                    }
+                },
+                "currentState": {
+                    "manifest": {
+                        "version": "",
+                        "id": "",
+                        "volumes": null,
+                        "containers": null,
+                        "restartPolicy": {}
+                    },
+                    "status": "Running",
+                    "Condition": [
+                        {
+                            "kind": "Ready",
+                            "status": "Full"
+                        }
+                    ],
+                    "host": "10.80.197.181",
+                    "hostIP": "10.80.197.181",
+                    "podIP": "10.0.51.4",
+                    "info": {
+                        "ubuntu4": {
+                            "state": {
+                                "running": {
+                                    "startedAt": "2015-03-18T15:25:03Z"
+                                }
+                            },
+                            "ready": true,
+                            "restartCount": 0,
+                            "image": "tutum/ubuntu:trusty",
+                            "imageID": "docker://dd925861a6d8e28a860a942295a5775e47f1e48b86e2728fb0460df8c392bffc",
+                            "containerID": "docker://0a7c4a67504a3ea61c08fc6a66f88b1718c24b2db72335fe252c94b1c68db592"
+                        }
+                    }
+                }
+            }
+        ]
+    }
+]
