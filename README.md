@@ -8,7 +8,11 @@ Install:
 
 Current endpoint support includes:
 
+* events
 * endpoints
+* namespaces
+* pods
+* minions
 
 Interaction is accomplished via `client.<endpoint>.<method>`. (see examples below)
 
@@ -25,6 +29,7 @@ var Client = require('node-kubernetes-client');
 var client = new Client({
     host:  'xx.xx.xx.xx',
     protocol: 'https:',
+    version: 'v1beta2',
     token: 'XYZ'
 });
 ```
