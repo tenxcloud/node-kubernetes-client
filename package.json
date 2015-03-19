@@ -27,6 +27,7 @@
     "sugar": "~1.3.9",
     "form-data": "~0.1.0",
     "json-gate": "~0.8.21",
+    "glob": "*",
     "async": "~0.2.9"
   },
   "devDependencies": {

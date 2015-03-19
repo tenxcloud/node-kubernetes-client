@@ -23,7 +23,7 @@ describe('Test k8s endpoints API', function() {
   it('should return the endpoints list', function(done) {
     client.endpoints.get(function (err, endpoints) {
       if (!err) {
-        console.log('endpoints: ' + JSON.stringify(endpoints));
+        //console.log('endpoints: ' + JSON.stringify(endpoints));
         assert(endpoints instanceof Array);
         // output results
         fs.writeFile("results/endpoints.json", JSON.stringify(endpoints, null, 4));
