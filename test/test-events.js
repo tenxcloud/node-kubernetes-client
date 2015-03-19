@@ -23,7 +23,7 @@ describe('Test k8s events API', function() {
   it('should return the events list', function(done) {
     client.events.get(function (err, events) {
       if (!err) {
-        //console.log('events: ' + JSON.stringify(events));
+        console.log('events: ' + JSON.stringify(events));
         assert(events instanceof Array);
         // output results
         fs.writeFile("results/events.json", JSON.stringify(events, null, 4));

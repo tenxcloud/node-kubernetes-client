@@ -24,7 +24,7 @@ describe('Test k8s pods API', function() {
   it('should return the pods list', function(done) {
     client.pods.get(function (err, podsArr) {
       if (!err) {
-        //console.log('pods: ' + JSON.stringify(podsArr));
+        console.log('pods: ' + JSON.stringify(podsArr));
         // output results
         fs.writeFile("results/pods.json", JSON.stringify(podsArr, null, 4));
         assert(podsArr instanceof Array);
@@ -41,7 +41,7 @@ describe('Test k8s pods API', function() {
     var podId = pods[0].id;
     client.pods.get(podId, function (err, pod) {
       if (!err) {
-        //console.log('pods ' + JSON.stringify(pod));
+        console.log('pods ' + JSON.stringify(pod));
         // output results
         fs.writeFile("results/pod.json", JSON.stringify(pod, null, 4));
         done();

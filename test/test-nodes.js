@@ -24,7 +24,7 @@ describe('Test k8s nodes API', function() {
   it('should return the nodes list', function(done) {
     client.nodes.get(function (err, nodesArr) {
       if (!err) {
-        //console.log('nodes: ' + JSON.stringify(nodesArr));
+        console.log('nodes: ' + JSON.stringify(nodesArr));
         // output results
         fs.writeFile("results/nodes.json", JSON.stringify(nodesArr, null, 4));
         assert(nodesArr instanceof Array);
@@ -41,7 +41,7 @@ describe('Test k8s nodes API', function() {
     var nodeId = nodes[0].id;
     client.nodes.get(nodeId, function (err, node) {
       if (!err) {
-        //console.log('node: ' + JSON.stringify(node));
+        console.log('node: ' + JSON.stringify(node));
         // output results
         fs.writeFile("results/node.json", JSON.stringify(node, null, 4));
         done();

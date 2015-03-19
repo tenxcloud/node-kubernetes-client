@@ -23,7 +23,7 @@ describe('Test k8s namespaces API', function() {
   it('should return the namespaces list', function(done) {
     client.namespaces.get(function (err, namespaces) {
       if (!err) {
-        //console.log('namespaces: ' + JSON.stringify(namespaces));
+        console.log('namespaces: ' + JSON.stringify(namespaces));
         assert(namespaces instanceof Array);
         // output results
         fs.writeFile("results/namespaces.json", JSON.stringify(namespaces, null, 4));

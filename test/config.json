@@ -2,7 +2,7 @@
   "k8s": {
     "protocol": "https",
     "host": "119.254.101.149:6443",
-    "version": "v1beta1",
+    "version": "v1beta2",
     "token": "BazzyRsm0xytyym7NIsrbcvVrjR01JGC"
   },
   "pattern" : "test-*.js",

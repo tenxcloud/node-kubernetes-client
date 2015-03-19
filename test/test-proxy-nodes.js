@@ -23,7 +23,7 @@ describe('Test k8s proxy API', function() {
   it('should return the proxy nodes list', function(done) {
     client.proxyNodes.get('slave2', function (err, nodesArr) {
       if (!err) {
-        //console.log('nodes: ' + JSON.stringify(nodesArr));
+        console.log('nodes: ' + JSON.stringify(nodesArr));
         // output results
         fs.writeFile("results/proxyNodes.json", JSON.stringify(nodesArr, null, 4));
         assert(nodesArr instanceof Array);

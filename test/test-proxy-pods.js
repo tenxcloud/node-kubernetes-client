@@ -23,7 +23,7 @@ describe('Test k8s proxy pods API', function() {
   it('should return the proxy nodes list', function(done) {
     client.proxyPods.get('slave2', function (err, pods) {
       if (!err) {
-        //console.log('pods: ' + JSON.stringify(pods));
+        console.log('pods: ' + JSON.stringify(pods));
         // output results
         fs.writeFile("results/proxyPods.json", JSON.stringify(pods, null, 4));
         assert(pods instanceof Array);
@@ -34,5 +34,4 @@ describe('Test k8s proxy pods API', function() {
       }
     });
   });
-
 });

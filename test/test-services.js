@@ -24,7 +24,7 @@ describe('Test k8s services API', function() {
   it('should return the services list', function(done) {
     client.services.get(function (err, servicesArr) {
       if (!err) {
-        //console.log('services: ' + JSON.stringify(servicesArr));
+        console.log('services: ' + JSON.stringify(servicesArr));
         // output results
         fs.writeFile("results/services.json", JSON.stringify(servicesArr, null, 4));
         assert(servicesArr instanceof Array);
@@ -41,7 +41,7 @@ describe('Test k8s services API', function() {
     var serviceId = services[0].id;
     client.services.get(serviceId, function (err, service) {
       if (!err) {
-        //console.log('services ' + JSON.stringify(service));
+        console.log('services ' + JSON.stringify(service));
         // output results
         fs.writeFile("results/service.json", JSON.stringify(service, null, 4));
         done();

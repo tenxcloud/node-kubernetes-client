@@ -24,7 +24,7 @@ describe('Test k8s replicationControllers API', function() {
   it('should return the replicationControllers list', function(done) {
     client.replicationControllers.get(function (err, replicationControllersArr) {
       if (!err) {
-        //console.log('replicationControllers: ' + JSON.stringify(replicationControllersArr));
+        console.log('replicationControllers: ' + JSON.stringify(replicationControllersArr));
         // output results
         fs.writeFile("results/replicationControllers.json", JSON.stringify(replicationControllersArr, null, 4));
         assert(replicationControllersArr instanceof Array);

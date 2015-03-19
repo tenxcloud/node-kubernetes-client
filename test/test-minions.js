@@ -24,7 +24,7 @@ describe('Test k8s minions API', function() {
   it('should return the minions list', function(done) {
     client.minions.get(function (err, minionsArr) {
       if (!err) {
-        //console.log('minions: ' + JSON.stringify(minionsArr));
+        console.log('minions: ' + JSON.stringify(minionsArr));
         // output results
         fs.writeFile("results/minions.json", JSON.stringify(minionsArr, null, 4));
         assert(minionsArr instanceof Array);
@@ -41,7 +41,7 @@ describe('Test k8s minions API', function() {
     var minionId = minions[0].id;
     client.minions.get(minionId, function (err, minion) {
       if (!err) {
-        //console.log('minion: ' + JSON.stringify(minion));
+        console.log('minion: ' + JSON.stringify(minion));
         // output results
         fs.writeFile("results/minion.json", JSON.stringify(minion, null, 4));
         done();
