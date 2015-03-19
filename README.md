@@ -64,4 +64,4 @@ See issues.
 
 # Support
 
-http://www.tenxcloud.com - a Docker startup from China
+http://www.tenxcloud.com - a Docker startup
