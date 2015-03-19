@@ -3,7 +3,7 @@
         "kind": "PodList",
         "creationTimestamp": null,
         "selfLink": "/api/v1beta2/pods?namespace=",
-        "resourceVersion": 23473,
+        "resourceVersion": 27856,
         "apiVersion": "v1beta2",
         "items": [
             {

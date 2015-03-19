@@ -1,0 +1,39 @@
+{
+  "kind": "Pod",
+  "id": "ubuntu2",
+  "apiVersion": "v1beta2",
+  "namespace": "default",
+  "labels": {
+    "name": "ubuntu2"
+  },
+  "desiredState": {
+    "manifest": {
+      "apiVersion": "v1beta2",
+      "id": "ubuntu2",
+      "volumes": null,
+      "containers": [
+        {
+          "name": "ubuntu2",
+          "image": "tutum/ubuntu:trusty",
+          "ports": [
+            {
+              "containerPort": 22,
+              "hostPort": 30010,
+              "protocol": "TCP"
+            }
+          ],
+          "env": [
+            {
+              "name": "ROOT_PASS",
+              "value": "tenxcloud"
+            }
+          ]
+        }
+      ],
+      "restartPolicy": {
+        "always": {}
+      },
+      "dnsPolicy": "ClusterFirst"
+    }
+  }
+}

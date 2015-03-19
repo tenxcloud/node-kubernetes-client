@@ -16,20 +16,24 @@ var Client = require('../index');
 describe('Test k8s pods API', function() {
   this.timeout(5000);
   var client;
-  var pods = [];
+  var pods, podId;
   beforeEach(function() {
     client = new Client(require('./config.json').k8s);
   });
-
+  /**
   it('should return the pods list', function(done) {
     client.pods.get(function (err, podsArr) {
       if (!err) {
         console.log('pods: ' + JSON.stringify(podsArr));
-        // output results
-        fs.writeFile("results/pods.json", JSON.stringify(podsArr, null, 4));
-        assert(podsArr instanceof Array);
         pods = podsArr[0].items;
-        done();
+        // output results
+        fs.writeFile("results/pods.json", JSON.stringify(podsArr, null, 4), function(err) {
+          if(err) {
+            console.log(err);
+          }
+          console.log("The file was saved!");
+          done();
+        });
       } else {
         console.log(err);
         assert(false);
@@ -38,12 +42,29 @@ describe('Test k8s pods API', function() {
   });
 
   it('should return the pod with specified id', function(done) {
-    var podId = pods[0].id;
-    client.pods.get(podId, function (err, pod) {
+    client.pods.get(pods[0].id, function (err, pod) {
       if (!err) {
         console.log('pods ' + JSON.stringify(pod));
         // output results
-        fs.writeFile("results/pod.json", JSON.stringify(pod, null, 4));
+        fs.writeFile("results/pod.json", JSON.stringify(pod, null, 4), function(err) {
+          if(err) {
+            console.log(err);
+          }
+          console.log("The file was saved!");
+          done();
+        });
+      } else {
+        console.log(err);
+        assert(false);
+      }
+    });
+  });
+  **/
+  it('should create a pod', function(done) {
+    client.pods.create(require('./json/pod.json'), function (err, pod) {
+      if (!err) {
+        console.log('pod ' + JSON.stringify(pod));
+        podId = pod.id;
         done();
       } else {
         console.log(err);
@@ -51,4 +72,30 @@ describe('Test k8s pods API', function() {
       }
     });
   });
+
+  it('should update a pod', function(done) {
+    client.pods.update(podId || 'ubuntu2', require('./json/pod.json'), function (err, pod) {
+      if (!err) {
+        console.log('pod ' + JSON.stringify(pod));
+        done();
+      } else {
+        console.log(err);
+        assert(false);
+      }
+    });
+  });
+
+  /**
+  it('should delete the pod', function(done) {
+    client.pods.delete(podId, function (err, pod) {
+      if (!err) {
+        console.log('pod ' + JSON.stringify(pod));
+        done();
+      } else {
+        console.log(err);
+        assert(false);
+      }
+    });
+  });**/
+
 });

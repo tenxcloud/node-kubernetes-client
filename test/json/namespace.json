@@ -1,0 +1,8 @@
+{
+  "apiVersion": "v1beta2",
+  "labels": {
+    "name": "myspace2"
+  },
+  "kind": "Namespace",
+  "id": "myspace2"
+}

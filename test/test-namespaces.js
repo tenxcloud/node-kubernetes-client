@@ -16,6 +16,7 @@ var fs = require('fs');
 describe('Test k8s namespaces API', function() {
   this.timeout(5000);
   var client;
+  var items = [];
   beforeEach(function() {
     client = new Client(require('./config.json').k8s);
   });
@@ -25,8 +26,59 @@ describe('Test k8s namespaces API', function() {
       if (!err) {
         console.log('namespaces: ' + JSON.stringify(namespaces));
         assert(namespaces instanceof Array);
+        items = namespaces[0].items;
         // output results
-        fs.writeFile("results/namespaces.json", JSON.stringify(namespaces, null, 4));
+        fs.writeFile("results/namespaces.json", JSON.stringify(namespaces, null, 4), function(err) {
+          if(err) {
+            console.log(err);
+          }
+          console.log("The file was saved!");
+          done();
+        });
+      } else {
+        console.log(err);
+        assert(false);
+      }
+    });
+  });
+
+  it('should return the namespace with specified id', function(done) {
+    var nsId = items[0].id;
+    client.namespaces.get(nsId, function (err, namespace) {
+      if (!err) {
+        console.log('namespace ' + JSON.stringify(namespace));
+        // output results
+        fs.writeFile("results/namespace.json", JSON.stringify(namespace, null, 4), function(err) {
+          if(err) {
+            console.log(err);
+          }
+          console.log("The file was saved!");
+          done();
+        });
+      } else {
+        console.log(err);
+        assert(false);
+      }
+    });
+  });
+
+  it('should delete the namespace with specified id', function(done) {
+    var nsId = items[2].id;
+    client.namespaces.delete(nsId, function (err, namespace) {
+      if (!err) {
+        console.log('namespace ' + JSON.stringify(namespace));
+        done();
+      } else {
+        console.log(err);
+        assert(false);
+      }
+    });
+  });
+
+  it('should create a namespace', function(done) {
+    client.namespaces.create(require('./json/namespace.json'), function (err, namespace) {
+      if (!err) {
+        console.log('namespace created successfully /r' + JSON.stringify(namespace));
         done();
       } else {
         console.log(err);
