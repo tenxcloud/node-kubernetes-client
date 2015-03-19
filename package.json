@@ -1,6 +1,6 @@
 {
   "name": "node-kubernetes-client",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Kubernetes client of Node.js",
   "main": "index.js",
   "scripts": {

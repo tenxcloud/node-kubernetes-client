@@ -61,3 +61,7 @@ The results will be output to test/results/ directory with formatted JSON.
 # Roadmap
 
 See issues.
+
+# Support
+
+http://www.tenxcloud.com - a Docker startup from China
