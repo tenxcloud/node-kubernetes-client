@@ -13,19 +13,19 @@ var assert = require('assert');
 var Client = require('../index');
 var fs = require('fs');
 
-describe('Test k8s proxy pods API', function() {
+describe('Test k8s watch pods API', function() {
   this.timeout(5000);
   var client;
   beforeEach(function() {
     client = new Client(require('./config.json').k8s);
   });
 
-  it('should return the proxy nodes list', function(done) {
-    client.proxyPods.get('default/92ee39d5-ce3b-11e4-89a6-52546d69a10d', function (err, pods) {
+  it('should return the watch nodes list', function(done) {
+    client.watchPods.get(function (err, pods) {
       if (!err) {
         console.log('pods: ' + JSON.stringify(pods));
         // output results
-        fs.writeFile("results/proxyPods.json", JSON.stringify(pods, null, 4));
+        fs.writeFile("results/watchPods.json", JSON.stringify(pods, null, 4));
         assert(pods instanceof Array);
         done();
       } else {

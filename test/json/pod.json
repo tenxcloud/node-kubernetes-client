@@ -1,24 +1,22 @@
 {
   "kind": "Pod",
-  "id": "ubuntu2",
+  "id": "ubuntu3",
   "apiVersion": "v1beta2",
   "namespace": "default",
   "labels": {
-    "name": "ubuntu2"
+    "name": "ubuntu3"
   },
   "desiredState": {
     "manifest": {
       "apiVersion": "v1beta2",
-      "id": "ubuntu2",
       "volumes": null,
       "containers": [
         {
-          "name": "ubuntu2",
+          "name": "ubuntu3",
           "image": "tutum/ubuntu:trusty",
           "ports": [
             {
               "containerPort": 22,
-              "hostPort": 30010,
               "protocol": "TCP"
             }
           ],

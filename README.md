@@ -13,6 +13,14 @@ Current endpoint support includes:
 * namespaces
 * pods
 * minions
+* services
+* replicationControllers
+* nodes
+* proxyMinions
+* proxyNodes
+* proxyPods
+* proxyServices
+* watchPods
 
 Interaction is accomplished via `client.<endpoint>.<method>`. (see examples below)
 
@@ -62,6 +70,6 @@ The results will be output to test/results/ directory with formatted JSON.
 
 See issues.
 
-# Support
+# Contribute
 
-http://www.tenxcloud.com - a Docker startup
+If you want to contribute to this project, please submit the request or send mail to: service@tenxcloud.com

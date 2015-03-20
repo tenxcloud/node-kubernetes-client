@@ -72,7 +72,7 @@ describe('Test k8s pods API', function() {
       }
     });
   });
-
+  /**
   it('should update a pod', function(done) {
     client.pods.update(podId || 'ubuntu2', require('./json/pod.json'), function (err, pod) {
       if (!err) {
@@ -85,9 +85,9 @@ describe('Test k8s pods API', function() {
     });
   });
 
-  /**
+
   it('should delete the pod', function(done) {
-    client.pods.delete(podId, function (err, pod) {
+    client.pods.delete(podId || 'ubuntu2', function (err, pod) {
       if (!err) {
         console.log('pod ' + JSON.stringify(pod));
         done();
@@ -96,6 +96,7 @@ describe('Test k8s pods API', function() {
         assert(false);
       }
     });
-  });**/
+  });
+**/
 
 });
