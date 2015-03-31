@@ -69,7 +69,3 @@ The results will be output to test/results/ directory with formatted JSON.
 # Roadmap
 
 See issues.
-
-# Contribute
-
-If you want to contribute to this project, please submit the request or send mail to: service@tenxcloud.com
