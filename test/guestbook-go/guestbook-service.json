@@ -1,0 +1,12 @@
+{
+  "apiVersion": "v1beta1",
+  "kind": "Service",
+  "id": "guestbook",
+  "port": 3000,
+  "containerPort": "http-server",
+  "publicIPs":[
+  "103.227.76.29"
+  ],
+  "labels": { "servicename": "guestbookwebapp" },
+  "selector": { "name": "guestbook" }
+}

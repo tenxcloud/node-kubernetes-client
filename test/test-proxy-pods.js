@@ -5,12 +5,12 @@
 /**
  * test kubernetes minions
  * @author huangqg
- * @date 2051-03-18
+ * @date 2015-03-18
  */
 
 var should = require('should');
 var assert = require('assert');
-var Client = require('../index');
+var Client = require('../../../kubernetes/api');
 var fs = require('fs');
 
 describe('Test k8s proxy pods API', function() {

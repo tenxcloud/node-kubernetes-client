@@ -1,0 +1,9 @@
+{
+  "apiVersion": "v1beta1",
+  "kind": "Service",
+  "id": "redis-master",
+  "port": 6379,
+  "containerPort": "redis-server",
+    "labels": { "servicename": "guestbookwebapp" },
+  "selector": { "name": "redis", "role": "master" }
+}

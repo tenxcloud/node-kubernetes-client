@@ -1,0 +1,66 @@
+{
+    "kind": "ReplicationController",
+    "id": "guestbook-controller",
+    "uid": "0ddc6841-cfaf-11e4-94ea-52546d69a10d",
+    "creationTimestamp": "2015-03-21T17:45:48+08:00",
+    "selfLink": "/api/v1beta1/replicationControllers/guestbook-controller?namespace=default",
+    "resourceVersion": 54819,
+    "apiVersion": "v1beta1",
+    "namespace": "default",
+    "desiredState": {
+        "replicas": 1,
+        "replicaSelector": {
+            "name": "guestbook"
+        },
+        "podTemplate": {
+            "desiredState": {
+                "manifest": {
+                    "version": "v1beta1",
+                    "id": "",
+                    "volumes": null,
+                    "containers": [
+                        {
+                            "name": "guestbook",
+                            "image": "kubernetes/guestbook:v2",
+                            "ports": [
+                                {
+                                    "name": "http-server",
+                                    "containerPort": 3000,
+                                    "protocol": "TCP"
+                                }
+                            ],
+                            "resources": {},
+                            "terminationMessagePath": "/dev/termination-log",
+                            "imagePullPolicy": "PullIfNotPresent",
+                            "capabilities": {}
+                        }
+                    ],
+                    "restartPolicy": {
+                        "always": {}
+                    },
+                    "dnsPolicy": "ClusterFirst"
+                }
+            },
+            "labels": {
+                "name": "guestbook"
+            }
+        }
+    },
+    "currentState": {
+        "replicas": 1,
+        "podTemplate": {
+            "desiredState": {
+                "manifest": {
+                    "version": "",
+                    "id": "",
+                    "volumes": null,
+                    "containers": null,
+                    "restartPolicy": {}
+                }
+            }
+        }
+    },
+    "labels": {
+        "name": "guestbook"
+    }
+}

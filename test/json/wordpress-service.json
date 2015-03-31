@@ -1,0 +1,10 @@
+{
+  "id": "",
+  "apiVersion": "v1beta1",
+  "kind": "Service",
+  "port": 3000,
+  "labels":{},
+  "selector":{},
+  "publicIPs": [],
+  "containerPort": 80
+}

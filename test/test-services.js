@@ -5,13 +5,13 @@
 /**
  * test kubernetes services
  * @author huangqg
- * @date 2051-03-18
+ * @date 2015-03-18
  */
 
 var should = require('should');
 var assert = require('assert');
 var fs = require('fs');
-var Client = require('../index');
+var Client = require('../../../kubernetes/api');
 
 describe('Test k8s services API', function() {
   this.timeout(5000);
@@ -26,10 +26,13 @@ describe('Test k8s services API', function() {
       if (!err) {
         console.log('services: ' + JSON.stringify(servicesArr));
         // output results
-        fs.writeFile("results/services.json", JSON.stringify(servicesArr, null, 4));
-        assert(servicesArr instanceof Array);
-        services = servicesArr[0].items;
-        done();
+        fs.writeFile("results/services.json", JSON.stringify(servicesArr, null, 4), function(err) {
+          if(err) {
+            console.log(err);
+          }
+          console.log("The file was saved!");
+          done();
+        });
       } else {
         console.log(err);
         assert(false);
@@ -43,8 +46,13 @@ describe('Test k8s services API', function() {
       if (!err) {
         console.log('services ' + JSON.stringify(service));
         // output results
-        fs.writeFile("results/service.json", JSON.stringify(service, null, 4));
-        done();
+        fs.writeFile("results/service.json", JSON.stringify(service, null, 4), function(err) {
+          if(err) {
+            console.log(err);
+          }
+          console.log("The file was saved!");
+          done();
+        });
       } else {
         console.log(err);
         assert(false);

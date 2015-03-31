@@ -1,0 +1,17 @@
+{
+  "id":"mywordpress-controller",
+  "apiVersion":"v1beta1",
+  "kind":"ReplicationController",
+  "desiredState":{
+    "replicas":1,
+    "replicaSelector":{
+      "name":"mywordpress"
+    },
+    "podTemplate":{
+
+    }
+  },
+  "labels":{
+    "name":"mywordpress"
+  }
+}

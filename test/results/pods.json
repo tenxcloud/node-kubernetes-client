@@ -1,329 +1,855 @@
-[
-    {
-        "kind": "PodList",
-        "creationTimestamp": null,
-        "selfLink": "/api/v1beta2/pods?namespace=",
-        "resourceVersion": 27856,
-        "apiVersion": "v1beta2",
-        "items": [
-            {
-                "id": "mysql",
-                "uid": "2b8483c1-cc6f-11e4-acdd-52546d69a10d",
-                "creationTimestamp": "2015-03-17T14:30:57+08:00",
-                "selfLink": "/api/v1beta2/pods/mysql?namespace=default",
-                "resourceVersion": 954,
-                "namespace": "default",
-                "labels": {
-                    "name": "mysql"
-                },
-                "desiredState": {
-                    "manifest": {
-                        "version": "v1beta2",
-                        "id": "",
-                        "volumes": null,
-                        "containers": [
-                            {
-                                "name": "mysql",
-                                "image": "tutum/mysql:latest",
-                                "ports": [
-                                    {
-                                        "containerPort": 3306,
-                                        "protocol": "TCP"
-                                    }
-                                ],
-                                "env": [
-                                    {
-                                        "name": "MYSQL_ROOT_PASSWORD",
-                                        "value": "tenxcloud"
-                                    }
-                                ],
-                                "resources": {
-                                    "limits": {
-                                        "cpu": "0.1"
-                                    }
+{
+    "kind": "PodList",
+    "creationTimestamp": null,
+    "selfLink": "/api/v1beta1/pods?namespace=default",
+    "resourceVersion": 38070,
+    "apiVersion": "v1beta1",
+    "items": [
+        {
+            "id": "cassandra",
+            "uid": "2afe32dd-cfa4-11e4-94ea-52546d69a10d",
+            "creationTimestamp": "2015-03-21T16:27:53+08:00",
+            "selfLink": "/api/v1beta1/pods/cassandra?namespace=default",
+            "resourceVersion": 1323,
+            "namespace": "default",
+            "labels": {
+                "name": "cassandra"
+            },
+            "desiredState": {
+                "manifest": {
+                    "version": "v1beta2",
+                    "id": "",
+                    "volumes": [
+                        {
+                            "name": "data",
+                            "source": {
+                                "hostDir": null,
+                                "emptyDir": {},
+                                "persistentDisk": null,
+                                "gitRepo": null,
+                                "secret": null
+                            }
+                        }
+                    ],
+                    "containers": [
+                        {
+                            "name": "cassandra",
+                            "image": "kubernetes/cassandra:v1",
+                            "command": [
+                                "/run.sh"
+                            ],
+                            "ports": [
+                                {
+                                    "name": "cql",
+                                    "containerPort": 9042,
+                                    "protocol": "TCP"
                                 },
-                                "cpu": 100,
-                                "terminationMessagePath": "/dev/termination-log",
-                                "imagePullPolicy": "PullAlways",
-                                "capabilities": {}
-                            }
-                        ],
-                        "restartPolicy": {
-                            "always": {}
-                        },
-                        "dnsPolicy": "ClusterFirst"
-                    }
-                },
-                "currentState": {
-                    "manifest": {
-                        "version": "",
-                        "id": "",
-                        "volumes": null,
-                        "containers": null,
-                        "restartPolicy": {}
-                    },
-                    "status": "Running",
-                    "Condition": [
-                        {
-                            "kind": "Ready",
-                            "status": "None"
-                        }
-                    ],
-                    "host": "10.80.197.181",
-                    "hostIP": "10.80.197.181",
-                    "podIP": "10.0.51.3",
-                    "info": {
-                        "mysql": {
-                            "state": {
-                                "termination": {
-                                    "exitCode": 0,
-                                    "startedAt": "2015-03-17T06:37:04Z",
-                                    "finishedAt": "2015-03-18T10:25:50Z"
+                                {
+                                    "name": "thrift",
+                                    "containerPort": 9160,
+                                    "protocol": "TCP"
+                                }
+                            ],
+                            "env": [
+                                {
+                                    "name": "MAX_HEAP_SIZE",
+                                    "key": "MAX_HEAP_SIZE",
+                                    "value": "512M"
+                                },
+                                {
+                                    "name": "HEAP_NEWSIZE",
+                                    "key": "HEAP_NEWSIZE",
+                                    "value": "100M"
+                                },
+                                {
+                                    "name": "KUBERNETES_API_PROTOCOL",
+                                    "key": "KUBERNETES_API_PROTOCOL",
+                                    "value": "http"
+                                }
+                            ],
+                            "resources": {
+                                "limits": {
+                                    "cpu": "1"
                                 }
                             },
-                            "ready": false,
-                            "restartCount": 0,
-                            "image": "tutum/mysql:latest",
-                            "imageID": "docker://26c0c52dc79af8acf07a18cd1693bfae91926f496ee4d1c1dbe29a014394b7c0",
-                            "containerID": "docker://dc2e178ad3f3cf97444323909d3032ca514ffb156f028a1243c9b5e547efaec7"
+                            "cpu": 1000,
+                            "volumeMounts": [
+                                {
+                                    "name": "data",
+                                    "mountPath": "/cassandra_data",
+                                    "path": "/cassandra_data"
+                                }
+                            ],
+                            "terminationMessagePath": "/dev/termination-log",
+                            "imagePullPolicy": "PullIfNotPresent",
+                            "capabilities": {}
                         }
-                    }
+                    ],
+                    "restartPolicy": {
+                        "always": {}
+                    },
+                    "dnsPolicy": "ClusterFirst"
                 }
             },
-            {
-                "id": "ubuntu",
-                "uid": "54349640-cc5d-11e4-acdd-52546d69a10d",
-                "creationTimestamp": "2015-03-17T12:23:14+08:00",
-                "selfLink": "/api/v1beta2/pods/ubuntu?namespace=default",
-                "resourceVersion": 199,
-                "namespace": "default",
-                "labels": {
-                    "name": "ubuntu"
+            "currentState": {
+                "manifest": {
+                    "version": "",
+                    "id": "",
+                    "volumes": null,
+                    "containers": null,
+                    "restartPolicy": {}
                 },
-                "desiredState": {
-                    "manifest": {
-                        "version": "v1beta2",
-                        "id": "",
-                        "volumes": null,
-                        "containers": [
-                            {
-                                "name": "ubuntu",
-                                "image": "tutum/ubuntu:trusty",
-                                "ports": [
-                                    {
-                                        "hostPort": 34567,
-                                        "containerPort": 22,
-                                        "protocol": "TCP"
-                                    }
-                                ],
-                                "env": [
-                                    {
-                                        "name": "ROOT_PASS",
-                                        "value": "tenxcloud"
-                                    }
-                                ],
-                                "resources": {},
-                                "terminationMessagePath": "/dev/termination-log",
-                                "imagePullPolicy": "PullIfNotPresent",
-                                "capabilities": {}
+                "status": "Running",
+                "Condition": [
+                    {
+                        "kind": "Ready",
+                        "status": "Full"
+                    }
+                ],
+                "host": "10.80.188.27",
+                "hostIP": "10.80.188.27",
+                "podIP": "10.0.72.5",
+                "info": {
+                    "cassandra": {
+                        "state": {
+                            "running": {
+                                "startedAt": "2015-03-24T03:33:10Z"
                             }
-                        ],
-                        "restartPolicy": {
-                            "always": {}
                         },
-                        "dnsPolicy": "ClusterFirst"
-                    }
-                },
-                "currentState": {
-                    "manifest": {
-                        "version": "",
-                        "id": "",
-                        "volumes": null,
-                        "containers": null,
-                        "restartPolicy": {}
-                    },
-                    "status": "Running",
-                    "Condition": [
-                        {
-                            "kind": "Ready",
-                            "status": "Full"
-                        }
-                    ],
-                    "host": "10.80.197.181",
-                    "hostIP": "10.80.197.181",
-                    "podIP": "10.0.51.2",
-                    "info": {
-                        "ubuntu": {
-                            "state": {
-                                "running": {
-                                    "startedAt": "2015-03-18T10:32:56Z"
-                                }
-                            },
-                            "ready": true,
-                            "restartCount": 1,
-                            "image": "tutum/ubuntu:trusty",
-                            "imageID": "docker://dd925861a6d8e28a860a942295a5775e47f1e48b86e2728fb0460df8c392bffc",
-                            "containerID": "docker://1a5a865364d93de07f784893f5fc9c5072e588273c001fa8c27b00696a312396"
-                        }
-                    }
-                }
-            },
-            {
-                "id": "ubuntu3",
-                "uid": "d0d5d8eb-cd80-11e4-89a6-52546d69a10d",
-                "creationTimestamp": "2015-03-18T23:09:47+08:00",
-                "selfLink": "/api/v1beta2/pods/ubuntu3?namespace=default",
-                "resourceVersion": 14431,
-                "namespace": "default",
-                "labels": {
-                    "name": "ubuntu3"
-                },
-                "desiredState": {
-                    "manifest": {
-                        "version": "v1beta2",
-                        "id": "",
-                        "volumes": null,
-                        "containers": [
-                            {
-                                "name": "ubuntu3",
-                                "image": "tutum/ubuntu:trusty",
-                                "ports": [
-                                    {
-                                        "hostPort": 34568,
-                                        "containerPort": 22,
-                                        "protocol": "TCP"
-                                    }
-                                ],
-                                "env": [
-                                    {
-                                        "name": "ROOT_PASS",
-                                        "value": "tenxcloud"
-                                    }
-                                ],
-                                "resources": {},
-                                "terminationMessagePath": "/dev/termination-log",
-                                "imagePullPolicy": "PullIfNotPresent",
-                                "capabilities": {}
-                            }
-                        ],
-                        "restartPolicy": {
-                            "always": {}
-                        },
-                        "dnsPolicy": "ClusterFirst"
-                    }
-                },
-                "currentState": {
-                    "manifest": {
-                        "version": "",
-                        "id": "",
-                        "volumes": null,
-                        "containers": null,
-                        "restartPolicy": {}
-                    },
-                    "status": "Running",
-                    "Condition": [
-                        {
-                            "kind": "Ready",
-                            "status": "Full"
-                        }
-                    ],
-                    "host": "10.80.188.27",
-                    "hostIP": "10.80.188.27",
-                    "podIP": "10.0.56.2",
-                    "info": {
-                        "ubuntu3": {
-                            "state": {
-                                "running": {
-                                    "startedAt": "2015-03-18T15:38:14Z"
-                                }
-                            },
-                            "ready": true,
-                            "restartCount": 0,
-                            "image": "tutum/ubuntu:trusty",
-                            "imageID": "docker://dd925861a6d8e28a860a942295a5775e47f1e48b86e2728fb0460df8c392bffc",
-                            "containerID": "docker://99ead6ace193128881b1ef32a1d60ab13290003bf42473dc785df7cc3d206954"
-                        }
-                    }
-                }
-            },
-            {
-                "id": "ubuntu4",
-                "uid": "f290ab48-cd82-11e4-89a6-52546d69a10d",
-                "creationTimestamp": "2015-03-18T23:25:02+08:00",
-                "selfLink": "/api/v1beta2/pods/ubuntu4?namespace=default",
-                "resourceVersion": 14611,
-                "namespace": "default",
-                "labels": {
-                    "name": "ubuntu4"
-                },
-                "desiredState": {
-                    "manifest": {
-                        "version": "v1beta2",
-                        "id": "",
-                        "volumes": null,
-                        "containers": [
-                            {
-                                "name": "ubuntu4",
-                                "image": "tutum/ubuntu:trusty",
-                                "ports": [
-                                    {
-                                        "hostPort": 34588,
-                                        "containerPort": 22,
-                                        "protocol": "TCP"
-                                    }
-                                ],
-                                "env": [
-                                    {
-                                        "name": "ROOT_PASS",
-                                        "value": "tenxcloud"
-                                    }
-                                ],
-                                "resources": {},
-                                "terminationMessagePath": "/dev/termination-log",
-                                "imagePullPolicy": "PullIfNotPresent",
-                                "capabilities": {}
-                            }
-                        ],
-                        "restartPolicy": {
-                            "always": {}
-                        },
-                        "dnsPolicy": "ClusterFirst"
-                    }
-                },
-                "currentState": {
-                    "manifest": {
-                        "version": "",
-                        "id": "",
-                        "volumes": null,
-                        "containers": null,
-                        "restartPolicy": {}
-                    },
-                    "status": "Running",
-                    "Condition": [
-                        {
-                            "kind": "Ready",
-                            "status": "Full"
-                        }
-                    ],
-                    "host": "10.80.197.181",
-                    "hostIP": "10.80.197.181",
-                    "podIP": "10.0.51.4",
-                    "info": {
-                        "ubuntu4": {
-                            "state": {
-                                "running": {
-                                    "startedAt": "2015-03-18T15:25:03Z"
-                                }
-                            },
-                            "ready": true,
-                            "restartCount": 0,
-                            "image": "tutum/ubuntu:trusty",
-                            "imageID": "docker://dd925861a6d8e28a860a942295a5775e47f1e48b86e2728fb0460df8c392bffc",
-                            "containerID": "docker://0a7c4a67504a3ea61c08fc6a66f88b1718c24b2db72335fe252c94b1c68db592"
-                        }
+                        "ready": true,
+                        "restartCount": 4,
+                        "image": "kubernetes/cassandra:v1",
+                        "imageID": "docker://13d7bd47a96343941fdf99748e2ff0033a69b0baf85ce0f2222c0016f65bb0bb",
+                        "containerID": "docker://b8c5fa7025677b518dac9919dfa0feba44f9676c2b9fc095d840eb8184dc1ff9"
                     }
                 }
             }
-        ]
-    }
-]
+        },
+        {
+            "id": "cassandra-fplln",
+            "uid": "695decfe-cfa9-11e4-94ea-52546d69a10d",
+            "creationTimestamp": "2015-03-21T17:05:25+08:00",
+            "selfLink": "/api/v1beta1/pods/cassandra-fplln?namespace=default",
+            "resourceVersion": 1769,
+            "namespace": "default",
+            "generateName": "cassandra-",
+            "labels": {
+                "name": "cassandra"
+            },
+            "desiredState": {
+                "manifest": {
+                    "version": "v1beta2",
+                    "id": "",
+                    "volumes": [
+                        {
+                            "name": "data",
+                            "source": {
+                                "hostDir": null,
+                                "emptyDir": {},
+                                "persistentDisk": null,
+                                "gitRepo": null,
+                                "secret": null
+                            }
+                        }
+                    ],
+                    "containers": [
+                        {
+                            "name": "cassandra",
+                            "image": "kubernetes/cassandra:v1",
+                            "command": [
+                                "/run.sh"
+                            ],
+                            "ports": [
+                                {
+                                    "name": "cql",
+                                    "containerPort": 9042,
+                                    "protocol": "TCP"
+                                },
+                                {
+                                    "name": "thrift",
+                                    "containerPort": 9160,
+                                    "protocol": "TCP"
+                                }
+                            ],
+                            "env": [
+                                {
+                                    "name": "MAX_HEAP_SIZE",
+                                    "key": "MAX_HEAP_SIZE",
+                                    "value": "512M"
+                                },
+                                {
+                                    "name": "HEAP_NEWSIZE",
+                                    "key": "HEAP_NEWSIZE",
+                                    "value": "100M"
+                                }
+                            ],
+                            "resources": {
+                                "limits": {
+                                    "cpu": "1"
+                                }
+                            },
+                            "cpu": 1000,
+                            "volumeMounts": [
+                                {
+                                    "name": "data",
+                                    "mountPath": "/cassandra_data",
+                                    "path": "/cassandra_data"
+                                }
+                            ],
+                            "terminationMessagePath": "/dev/termination-log",
+                            "imagePullPolicy": "PullIfNotPresent",
+                            "capabilities": {}
+                        }
+                    ],
+                    "restartPolicy": {
+                        "always": {}
+                    },
+                    "dnsPolicy": "ClusterFirst"
+                }
+            },
+            "currentState": {
+                "manifest": {
+                    "version": "",
+                    "id": "",
+                    "volumes": null,
+                    "containers": null,
+                    "restartPolicy": {}
+                },
+                "status": "Running",
+                "Condition": [
+                    {
+                        "kind": "Ready",
+                        "status": "Full"
+                    }
+                ],
+                "host": "10.80.197.181",
+                "hostIP": "10.80.197.181",
+                "podIP": "10.0.70.6",
+                "info": {
+                    "cassandra": {
+                        "state": {
+                            "running": {
+                                "startedAt": "2015-03-24T03:32:39Z"
+                            }
+                        },
+                        "ready": true,
+                        "restartCount": 4,
+                        "image": "kubernetes/cassandra:v1",
+                        "imageID": "docker://13d7bd47a96343941fdf99748e2ff0033a69b0baf85ce0f2222c0016f65bb0bb",
+                        "containerID": "docker://96117d28664005ca4cfb95547f11e71cf0166eb40a591b2bfc5311a5a5fa4a1a"
+                    }
+                }
+            }
+        },
+        {
+            "id": "guestbook-controller-hh2gd",
+            "uid": "0dec89be-cfaf-11e4-94ea-52546d69a10d",
+            "creationTimestamp": "2015-03-21T17:45:48+08:00",
+            "selfLink": "/api/v1beta1/pods/guestbook-controller-hh2gd?namespace=default",
+            "resourceVersion": 2288,
+            "namespace": "default",
+            "generateName": "guestbook-controller-",
+            "labels": {
+                "name": "guestbook"
+            },
+            "desiredState": {
+                "manifest": {
+                    "version": "v1beta2",
+                    "id": "",
+                    "volumes": null,
+                    "containers": [
+                        {
+                            "name": "guestbook",
+                            "image": "kubernetes/guestbook:v2",
+                            "ports": [
+                                {
+                                    "name": "http-server",
+                                    "containerPort": 3000,
+                                    "protocol": "TCP"
+                                }
+                            ],
+                            "resources": {},
+                            "terminationMessagePath": "/dev/termination-log",
+                            "imagePullPolicy": "PullIfNotPresent",
+                            "capabilities": {}
+                        }
+                    ],
+                    "restartPolicy": {
+                        "always": {}
+                    },
+                    "dnsPolicy": "ClusterFirst"
+                }
+            },
+            "currentState": {
+                "manifest": {
+                    "version": "",
+                    "id": "",
+                    "volumes": null,
+                    "containers": null,
+                    "restartPolicy": {}
+                },
+                "status": "Running",
+                "Condition": [
+                    {
+                        "kind": "Ready",
+                        "status": "Full"
+                    }
+                ],
+                "host": "10.80.197.181",
+                "hostIP": "10.80.197.181",
+                "podIP": "10.0.70.3",
+                "info": {
+                    "guestbook": {
+                        "state": {
+                            "running": {
+                                "startedAt": "2015-03-24T03:32:39Z"
+                            }
+                        },
+                        "ready": true,
+                        "restartCount": 4,
+                        "image": "kubernetes/guestbook:v2",
+                        "imageID": "docker://6525c07bfd08eac8e77751b55f09ce88f90cf352c37b8a6e04ff4e360e5703a1",
+                        "containerID": "docker://ce68285f396071be765b4269ecdb1ca13dc00c192e7fad1cf69ec129a84b1652"
+                    }
+                }
+            }
+        },
+        {
+            "id": "guestbook-controller-ls6k1",
+            "uid": "0debc86f-cfaf-11e4-94ea-52546d69a10d",
+            "creationTimestamp": "2015-03-21T17:45:48+08:00",
+            "selfLink": "/api/v1beta1/pods/guestbook-controller-ls6k1?namespace=default",
+            "resourceVersion": 2286,
+            "namespace": "default",
+            "generateName": "guestbook-controller-",
+            "labels": {
+                "name": "guestbook"
+            },
+            "desiredState": {
+                "manifest": {
+                    "version": "v1beta2",
+                    "id": "",
+                    "volumes": null,
+                    "containers": [
+                        {
+                            "name": "guestbook",
+                            "image": "kubernetes/guestbook:v2",
+                            "ports": [
+                                {
+                                    "name": "http-server",
+                                    "containerPort": 3000,
+                                    "protocol": "TCP"
+                                }
+                            ],
+                            "resources": {},
+                            "terminationMessagePath": "/dev/termination-log",
+                            "imagePullPolicy": "PullIfNotPresent",
+                            "capabilities": {}
+                        }
+                    ],
+                    "restartPolicy": {
+                        "always": {}
+                    },
+                    "dnsPolicy": "ClusterFirst"
+                }
+            },
+            "currentState": {
+                "manifest": {
+                    "version": "",
+                    "id": "",
+                    "volumes": null,
+                    "containers": null,
+                    "restartPolicy": {}
+                },
+                "status": "Running",
+                "Condition": [
+                    {
+                        "kind": "Ready",
+                        "status": "Full"
+                    }
+                ],
+                "host": "10.80.188.27",
+                "hostIP": "10.80.188.27",
+                "podIP": "10.0.72.6",
+                "info": {
+                    "guestbook": {
+                        "state": {
+                            "running": {
+                                "startedAt": "2015-03-24T03:33:10Z"
+                            }
+                        },
+                        "ready": true,
+                        "restartCount": 4,
+                        "image": "kubernetes/guestbook:v2",
+                        "imageID": "docker://6525c07bfd08eac8e77751b55f09ce88f90cf352c37b8a6e04ff4e360e5703a1",
+                        "containerID": "docker://8cd6d087a621b046dd25543b8e4457969832730cd85c5d62cc1cfc9550db1669"
+                    }
+                }
+            }
+        },
+        {
+            "id": "guestbook-controller-nyxxv",
+            "uid": "0decfd2e-cfaf-11e4-94ea-52546d69a10d",
+            "creationTimestamp": "2015-03-21T17:45:48+08:00",
+            "selfLink": "/api/v1beta1/pods/guestbook-controller-nyxxv?namespace=default",
+            "resourceVersion": 2291,
+            "namespace": "default",
+            "generateName": "guestbook-controller-",
+            "labels": {
+                "name": "guestbook"
+            },
+            "desiredState": {
+                "manifest": {
+                    "version": "v1beta2",
+                    "id": "",
+                    "volumes": null,
+                    "containers": [
+                        {
+                            "name": "guestbook",
+                            "image": "kubernetes/guestbook:v2",
+                            "ports": [
+                                {
+                                    "name": "http-server",
+                                    "containerPort": 3000,
+                                    "protocol": "TCP"
+                                }
+                            ],
+                            "resources": {},
+                            "terminationMessagePath": "/dev/termination-log",
+                            "imagePullPolicy": "PullIfNotPresent",
+                            "capabilities": {}
+                        }
+                    ],
+                    "restartPolicy": {
+                        "always": {}
+                    },
+                    "dnsPolicy": "ClusterFirst"
+                }
+            },
+            "currentState": {
+                "manifest": {
+                    "version": "",
+                    "id": "",
+                    "volumes": null,
+                    "containers": null,
+                    "restartPolicy": {}
+                },
+                "status": "Running",
+                "Condition": [
+                    {
+                        "kind": "Ready",
+                        "status": "Full"
+                    }
+                ],
+                "host": "10.80.188.27",
+                "hostIP": "10.80.188.27",
+                "podIP": "10.0.72.4",
+                "info": {
+                    "guestbook": {
+                        "state": {
+                            "running": {
+                                "startedAt": "2015-03-24T03:33:10Z"
+                            }
+                        },
+                        "ready": true,
+                        "restartCount": 4,
+                        "image": "kubernetes/guestbook:v2",
+                        "imageID": "docker://6525c07bfd08eac8e77751b55f09ce88f90cf352c37b8a6e04ff4e360e5703a1",
+                        "containerID": "docker://688d78e6b1a73360745a192ce22b2ec9f441c1275ee61e6e5db61dc5675d883c"
+                    }
+                }
+            }
+        },
+        {
+            "id": "mysql",
+            "uid": "37dc7bbb-d0a2-11e4-ab21-52546d69a10d",
+            "creationTimestamp": "2015-03-22T22:46:26+08:00",
+            "selfLink": "/api/v1beta1/pods/mysql?namespace=default",
+            "resourceVersion": 18037,
+            "namespace": "default",
+            "labels": {
+                "name": "mysql"
+            },
+            "desiredState": {
+                "manifest": {
+                    "version": "v1beta2",
+                    "id": "",
+                    "volumes": null,
+                    "containers": [
+                        {
+                            "name": "mysql",
+                            "image": "mysql",
+                            "ports": [
+                                {
+                                    "containerPort": 3306,
+                                    "protocol": "TCP"
+                                }
+                            ],
+                            "env": [
+                                {
+                                    "name": "MYSQL_ROOT_PASSWORD",
+                                    "key": "MYSQL_ROOT_PASSWORD",
+                                    "value": "tenxcloud"
+                                }
+                            ],
+                            "resources": {},
+                            "terminationMessagePath": "/dev/termination-log",
+                            "imagePullPolicy": "PullIfNotPresent",
+                            "capabilities": {}
+                        }
+                    ],
+                    "restartPolicy": {
+                        "always": {}
+                    },
+                    "dnsPolicy": "ClusterFirst"
+                }
+            },
+            "currentState": {
+                "manifest": {
+                    "version": "",
+                    "id": "",
+                    "volumes": null,
+                    "containers": null,
+                    "restartPolicy": {}
+                },
+                "status": "Running",
+                "Condition": [
+                    {
+                        "kind": "Ready",
+                        "status": "Full"
+                    }
+                ],
+                "host": "10.80.197.181",
+                "hostIP": "10.80.197.181",
+                "podIP": "10.0.70.4",
+                "info": {
+                    "mysql": {
+                        "state": {
+                            "running": {
+                                "startedAt": "2015-03-24T03:32:39Z"
+                            }
+                        },
+                        "ready": true,
+                        "restartCount": 2,
+                        "image": "mysql",
+                        "imageID": "docker://e93afb6a83e9df759e58f73804d2a7531ade4babeae6a3961e636885d97c2173",
+                        "containerID": "docker://48b8058dc949e65decead1d589cd43062d20deb86dd37843ccff07c8db820e5f"
+                    }
+                }
+            }
+        },
+        {
+            "id": "redis-master-controller-gziey",
+            "uid": "a86457ec-cfaa-11e4-94ea-52546d69a10d",
+            "creationTimestamp": "2015-03-21T17:14:20+08:00",
+            "selfLink": "/api/v1beta1/pods/redis-master-controller-gziey?namespace=default",
+            "resourceVersion": 1878,
+            "namespace": "default",
+            "generateName": "redis-master-controller-",
+            "labels": {
+                "name": "redis",
+                "role": "master"
+            },
+            "desiredState": {
+                "manifest": {
+                    "version": "v1beta2",
+                    "id": "",
+                    "volumes": null,
+                    "containers": [
+                        {
+                            "name": "redis-master",
+                            "image": "gurpartap/redis",
+                            "ports": [
+                                {
+                                    "name": "redis-server",
+                                    "containerPort": 6379,
+                                    "protocol": "TCP"
+                                }
+                            ],
+                            "resources": {},
+                            "terminationMessagePath": "/dev/termination-log",
+                            "imagePullPolicy": "PullIfNotPresent",
+                            "capabilities": {}
+                        }
+                    ],
+                    "restartPolicy": {
+                        "always": {}
+                    },
+                    "dnsPolicy": "ClusterFirst"
+                }
+            },
+            "currentState": {
+                "manifest": {
+                    "version": "",
+                    "id": "",
+                    "volumes": null,
+                    "containers": null,
+                    "restartPolicy": {}
+                },
+                "status": "Running",
+                "Condition": [
+                    {
+                        "kind": "Ready",
+                        "status": "Full"
+                    }
+                ],
+                "host": "10.80.188.27",
+                "hostIP": "10.80.188.27",
+                "podIP": "10.0.72.3",
+                "info": {
+                    "redis-master": {
+                        "state": {
+                            "running": {
+                                "startedAt": "2015-03-24T03:33:10Z"
+                            }
+                        },
+                        "ready": true,
+                        "restartCount": 4,
+                        "image": "gurpartap/redis",
+                        "imageID": "docker://8ed086d6282dcf392a0ae5f3d2c7b8f063681c9cd8a56322fa735735aa2f3aee",
+                        "containerID": "docker://a592759c227d27134330380ef241059158e389d7494a09321c68f13f089d4631"
+                    }
+                }
+            }
+        },
+        {
+            "id": "redis-slave-controller-0133o",
+            "uid": "ff6e398a-cfad-11e4-94ea-52546d69a10d",
+            "creationTimestamp": "2015-03-21T17:38:14+08:00",
+            "selfLink": "/api/v1beta1/pods/redis-slave-controller-0133o?namespace=default",
+            "resourceVersion": 2188,
+            "namespace": "default",
+            "generateName": "redis-slave-controller-",
+            "labels": {
+                "name": "redis",
+                "role": "slave"
+            },
+            "desiredState": {
+                "manifest": {
+                    "version": "v1beta2",
+                    "id": "",
+                    "volumes": null,
+                    "containers": [
+                        {
+                            "name": "redis-slave",
+                            "image": "gurpartap/redis",
+                            "command": [
+                                "sh",
+                                "-c",
+                                "redis-server /etc/redis/redis.conf --slaveof redis-master 6379"
+                            ],
+                            "ports": [
+                                {
+                                    "name": "redis-server",
+                                    "containerPort": 6379,
+                                    "protocol": "TCP"
+                                }
+                            ],
+                            "resources": {},
+                            "terminationMessagePath": "/dev/termination-log",
+                            "imagePullPolicy": "PullIfNotPresent",
+                            "capabilities": {}
+                        }
+                    ],
+                    "restartPolicy": {
+                        "always": {}
+                    },
+                    "dnsPolicy": "ClusterFirst"
+                }
+            },
+            "currentState": {
+                "manifest": {
+                    "version": "",
+                    "id": "",
+                    "volumes": null,
+                    "containers": null,
+                    "restartPolicy": {}
+                },
+                "status": "Running",
+                "Condition": [
+                    {
+                        "kind": "Ready",
+                        "status": "Full"
+                    }
+                ],
+                "host": "10.80.188.27",
+                "hostIP": "10.80.188.27",
+                "podIP": "10.0.72.2",
+                "info": {
+                    "redis-slave": {
+                        "state": {
+                            "running": {
+                                "startedAt": "2015-03-24T03:33:10Z"
+                            }
+                        },
+                        "ready": true,
+                        "restartCount": 4,
+                        "image": "gurpartap/redis",
+                        "imageID": "docker://8ed086d6282dcf392a0ae5f3d2c7b8f063681c9cd8a56322fa735735aa2f3aee",
+                        "containerID": "docker://acb40aea29c149783088d8277dee9bd2e246ad7958cd65398adc6768269681f0"
+                    }
+                }
+            }
+        },
+        {
+            "id": "redis-slave-controller-oh43e",
+            "uid": "ff6dc73c-cfad-11e4-94ea-52546d69a10d",
+            "creationTimestamp": "2015-03-21T17:38:14+08:00",
+            "selfLink": "/api/v1beta1/pods/redis-slave-controller-oh43e?namespace=default",
+            "resourceVersion": 2186,
+            "namespace": "default",
+            "generateName": "redis-slave-controller-",
+            "labels": {
+                "name": "redis",
+                "role": "slave"
+            },
+            "desiredState": {
+                "manifest": {
+                    "version": "v1beta2",
+                    "id": "",
+                    "volumes": null,
+                    "containers": [
+                        {
+                            "name": "redis-slave",
+                            "image": "gurpartap/redis",
+                            "command": [
+                                "sh",
+                                "-c",
+                                "redis-server /etc/redis/redis.conf --slaveof redis-master 6379"
+                            ],
+                            "ports": [
+                                {
+                                    "name": "redis-server",
+                                    "containerPort": 6379,
+                                    "protocol": "TCP"
+                                }
+                            ],
+                            "resources": {},
+                            "terminationMessagePath": "/dev/termination-log",
+                            "imagePullPolicy": "PullIfNotPresent",
+                            "capabilities": {}
+                        }
+                    ],
+                    "restartPolicy": {
+                        "always": {}
+                    },
+                    "dnsPolicy": "ClusterFirst"
+                }
+            },
+            "currentState": {
+                "manifest": {
+                    "version": "",
+                    "id": "",
+                    "volumes": null,
+                    "containers": null,
+                    "restartPolicy": {}
+                },
+                "status": "Running",
+                "Condition": [
+                    {
+                        "kind": "Ready",
+                        "status": "Full"
+                    }
+                ],
+                "host": "10.80.197.181",
+                "hostIP": "10.80.197.181",
+                "podIP": "10.0.70.2",
+                "info": {
+                    "redis-slave": {
+                        "state": {
+                            "running": {
+                                "startedAt": "2015-03-24T03:32:39Z"
+                            }
+                        },
+                        "ready": true,
+                        "restartCount": 4,
+                        "image": "gurpartap/redis",
+                        "imageID": "docker://8ed086d6282dcf392a0ae5f3d2c7b8f063681c9cd8a56322fa735735aa2f3aee",
+                        "containerID": "docker://bc03cfa02dd341d207c5dade28c64823f7a4fb9e6026f2f96d5b347b0967dc75"
+                    }
+                }
+            }
+        },
+        {
+            "id": "ubuntu1",
+            "uid": "2a641cca-cfa5-11e4-94ea-52546d69a10d",
+            "creationTimestamp": "2015-03-21T16:35:01+08:00",
+            "selfLink": "/api/v1beta1/pods/ubuntu1?namespace=default",
+            "resourceVersion": 1411,
+            "namespace": "default",
+            "labels": {
+                "name": "ubuntu1"
+            },
+            "desiredState": {
+                "manifest": {
+                    "version": "v1beta2",
+                    "id": "",
+                    "volumes": null,
+                    "containers": [
+                        {
+                            "name": "ubuntu1",
+                            "image": "tutum/ubuntu:trusty",
+                            "ports": [
+                                {
+                                    "hostPort": 34567,
+                                    "containerPort": 22,
+                                    "protocol": "TCP"
+                                }
+                            ],
+                            "env": [
+                                {
+                                    "name": "ROOT_PASS",
+                                    "key": "ROOT_PASS",
+                                    "value": "tenxcloud"
+                                }
+                            ],
+                            "resources": {},
+                            "terminationMessagePath": "/dev/termination-log",
+                            "imagePullPolicy": "PullIfNotPresent",
+                            "capabilities": {}
+                        }
+                    ],
+                    "restartPolicy": {
+                        "onFailure": {}
+                    },
+                    "dnsPolicy": "ClusterFirst"
+                }
+            },
+            "currentState": {
+                "manifest": {
+                    "version": "",
+                    "id": "",
+                    "volumes": null,
+                    "containers": null,
+                    "restartPolicy": {}
+                },
+                "status": "Succeeded",
+                "Condition": [
+                    {
+                        "kind": "Ready",
+                        "status": "None"
+                    }
+                ],
+                "host": "10.80.197.181",
+                "hostIP": "10.80.197.181",
+                "podIP": "10.0.70.5",
+                "info": {
+                    "ubuntu1": {
+                        "state": {
+                            "termination": {
+                                "exitCode": 0,
+                                "startedAt": "2015-03-21T08:35:01Z",
+                                "finishedAt": "2015-03-21T13:39:05Z"
+                            }
+                        },
+                        "ready": false,
+                        "restartCount": 0,
+                        "image": "tutum/ubuntu:trusty",
+                        "imageID": "docker://a1f9f1afcff779b7c1c0142fa70d3cc3205101ac9cb6f94c0e6f5c8d15ba6ea2",
+                        "containerID": "docker://1ad1a4dddef2976ef8472ef405792a91204d5f356b0b394868c39ffcf1fd5c10"
+                    }
+                }
+            }
+        }
+    ]
+}

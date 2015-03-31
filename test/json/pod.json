@@ -1,10 +1,10 @@
 {
   "kind": "Pod",
-  "id": "ubuntu3",
+  "id": "ubuntu1",
   "apiVersion": "v1beta2",
   "namespace": "default",
   "labels": {
-    "name": "ubuntu3"
+    "name": "ubuntu1"
   },
   "desiredState": {
     "manifest": {
@@ -12,12 +12,13 @@
       "volumes": null,
       "containers": [
         {
-          "name": "ubuntu3",
+          "name": "ubuntu1",
           "image": "tutum/ubuntu:trusty",
           "ports": [
             {
               "containerPort": 22,
-              "protocol": "TCP"
+              "protocol": "TCP",
+              "hostPort": 34567
             }
           ],
           "env": [
@@ -29,7 +30,7 @@
         }
       ],
       "restartPolicy": {
-        "always": {}
+        "OnFailure": {}
       },
       "dnsPolicy": "ClusterFirst"
     }

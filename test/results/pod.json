@@ -1,44 +1,82 @@
 {
     "kind": "Pod",
-    "id": "mysql",
-    "uid": "2b8483c1-cc6f-11e4-acdd-52546d69a10d",
-    "creationTimestamp": "2015-03-17T14:30:57+08:00",
-    "selfLink": "/api/v1beta2/pods/mysql?namespace=default",
-    "resourceVersion": 954,
-    "apiVersion": "v1beta2",
+    "id": "cassandra",
+    "uid": "2afe32dd-cfa4-11e4-94ea-52546d69a10d",
+    "creationTimestamp": "2015-03-21T16:27:53+08:00",
+    "selfLink": "/api/v1beta1/pods/cassandra?namespace=default",
+    "resourceVersion": 1323,
+    "apiVersion": "v1beta1",
     "namespace": "default",
     "labels": {
-        "name": "mysql"
+        "name": "cassandra"
     },
     "desiredState": {
         "manifest": {
             "version": "v1beta2",
             "id": "",
-            "volumes": null,
+            "volumes": [
+                {
+                    "name": "data",
+                    "source": {
+                        "hostDir": null,
+                        "emptyDir": {},
+                        "persistentDisk": null,
+                        "gitRepo": null,
+                        "secret": null
+                    }
+                }
+            ],
             "containers": [
                 {
-                    "name": "mysql",
-                    "image": "tutum/mysql:latest",
+                    "name": "cassandra",
+                    "image": "kubernetes/cassandra:v1",
+                    "command": [
+                        "/run.sh"
+                    ],
                     "ports": [
                         {
-                            "containerPort": 3306,
+                            "name": "cql",
+                            "containerPort": 9042,
+                            "protocol": "TCP"
+                        },
+                        {
+                            "name": "thrift",
+                            "containerPort": 9160,
                             "protocol": "TCP"
                         }
                     ],
                     "env": [
                         {
-                            "name": "MYSQL_ROOT_PASSWORD",
-                            "value": "tenxcloud"
+                            "name": "MAX_HEAP_SIZE",
+                            "key": "MAX_HEAP_SIZE",
+                            "value": "512M"
+                        },
+                        {
+                            "name": "HEAP_NEWSIZE",
+                            "key": "HEAP_NEWSIZE",
+                            "value": "100M"
+                        },
+                        {
+                            "name": "KUBERNETES_API_PROTOCOL",
+                            "key": "KUBERNETES_API_PROTOCOL",
+                            "value": "http"
                         }
                     ],
                     "resources": {
                         "limits": {
-                            "cpu": "0.1"
+                            "cpu": "1"
                         }
                     },
-                    "cpu": 100,
+                    "cpu": 1000,
+                    "volumeMounts": [
+                        {
+                            "name": "data",
+                            "mountPath": "/cassandra_data",
+                            "path": "/cassandra_data"
+                        }
+                    ],
                     "terminationMessagePath": "/dev/termination-log",
-                    "imagePullPolicy": "PullAlways",
+                    "imagePullPolicy": "PullIfNotPresent",
                     "capabilities": {}
                 }
             ],
@@ -60,26 +98,24 @@
         "Condition": [
             {
                 "kind": "Ready",
-                "status": "None"
+                "status": "Full"
             }
         ],
-        "host": "10.80.197.181",
-        "hostIP": "10.80.197.181",
-        "podIP": "10.0.51.3",
+        "host": "10.80.188.27",
+        "hostIP": "10.80.188.27",
+        "podIP": "10.0.72.5",
         "info": {
-            "mysql": {
+            "cassandra": {
                 "state": {
-                    "termination": {
-                        "exitCode": 0,
-                        "startedAt": "2015-03-17T06:37:04Z",
-                        "finishedAt": "2015-03-18T10:25:50Z"
+                    "running": {
+                        "startedAt": "2015-03-24T03:33:10Z"
                     }
                 },
-                "ready": false,
-                "restartCount": 0,
-                "image": "tutum/mysql:latest",
-                "imageID": "docker://26c0c52dc79af8acf07a18cd1693bfae91926f496ee4d1c1dbe29a014394b7c0",
-                "containerID": "docker://dc2e178ad3f3cf97444323909d3032ca514ffb156f028a1243c9b5e547efaec7"
+                "ready": true,
+                "restartCount": 4,
+                "image": "kubernetes/cassandra:v1",
+                "imageID": "docker://13d7bd47a96343941fdf99748e2ff0033a69b0baf85ce0f2222c0016f65bb0bb",
+                "containerID": "docker://b8c5fa7025677b518dac9919dfa0feba44f9676c2b9fc095d840eb8184dc1ff9"
             }
         }
     }

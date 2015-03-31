@@ -1,0 +1,51 @@
+{
+    "id": "mywordpress6",
+    "apiVersion": "v1beta1",
+    "kind": "ReplicationController",
+    "desiredState": {
+        "replicas": 1,
+        "replicaSelector": {
+            "name": "mywordpress6"
+        },
+        "podTemplate": {
+            "desiredState": {
+                "manifest": {
+                    "id": "mywordpress3",
+                    "version": "v1beta1",
+                    "containers": [
+                        {
+                            "name": "mywordpress6",
+                            "image": "wordpress",
+                            "ports": [
+                                {
+                                    "hostPort": 5001,
+                                    "containerPort": 80
+                                }
+                            ],
+                            "env": [
+                                {
+                                    "name": "WORDPRESS_DB_HOST",
+                                    "value": "10.80.197.181:3306"
+                                },
+                                {
+                                    "name": "WORDPRESS_DB_USER",
+                                    "value": "root"
+                                },
+                                {
+                                    "name": "WORDPRESS_DB_PASSWORD",
+                                    "value": "tenxcloud"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "labels": {
+                "name": "mywordpress6"
+            }
+        }
+    },
+    "labels": {
+        "name": "mywordpress6"
+    }
+}
