@@ -1,9 +1,9 @@
 {
   "k8s": {
     "protocol": "https",
-    "host": "",
+    "host": "<ip>:<port>",
     "version": "v1beta1",
-    "token": ""
+    "token": "<token>"
   },
   "pattern" : "test-*.js",
   "skip" : []

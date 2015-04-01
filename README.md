@@ -1,6 +1,10 @@
 # Google Kubernetes client
 
-Supports interaction with Kubernetes.
+Node.js client library for Google's Kubernetes API (https://github.com/GoogleCloudPlatform/kubernetes)
+
+You can use this library to call a Kubernetes API hosted in a Kubernetes master node using Node.js.
+
+You can also find this library from https://www.npmjs.com/package/node-kubernetes-client
 
 Install:
 

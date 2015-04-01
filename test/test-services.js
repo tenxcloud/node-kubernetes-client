@@ -1,7 +1,3 @@
-/*
-* Licensed Materials - Property of tenxcloud.com
-* (C) Copyright 2015 TenX Cloud. All Rights Reserved.
-*/
 /**
  * test kubernetes services
  * @author huangqg

@@ -1,14 +1,10 @@
-/*
-* Licensed Materials - Property of tenxcloud.com
-* (C) Copyright 2015 TenX Cloud. All Rights Reserved.
-*/
 /**
  * test kubernetes replicationControllers
  * @author huangqg
  * @date 2051-03-18
  */
 
- 
+
 var assert = require('assert');
 var fs = require('fs');
 var Client = require('../../../kubernetes/api');
@@ -46,7 +42,7 @@ var Client = require('../../../kubernetes/api');
                 }else {
                   throw err;
                 }
-              });    
+              });
 
               } else {
                 throw err;
@@ -55,14 +51,14 @@ var Client = require('../../../kubernetes/api');
           }else {
             throw err;
           }
-        });  
+        });
       } else {
         console.log(err);
-        
+
       }
     });
     } else {
       console.log(err);
- 
+
     }
   });

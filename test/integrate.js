@@ -1,7 +1,3 @@
-/*
-* Licensed Materials - Property of tenxcloud.com
-* (C) Copyright 2014 TenX Cloud. All Rights Reserved.
-*/
 /**
  * integrate unit tests
  */
