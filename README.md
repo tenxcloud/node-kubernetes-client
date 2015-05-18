@@ -43,6 +43,15 @@ var client = new Client({
 });
 ```
 
+### Optional params:
+Some optional params also exist on initialising the client. 
+```js
+{
+    namespace:  'someNamespace', // filter all client requests by a namespace - default is no namespace
+    apiPrefix: 'someNamespace' // for APIs with a different API prefix to 'api'
+}
+```
+
 ## Getting from pods
 
 Paging is accomplished automatically. For example, a request for `pods` will
@@ -54,6 +63,15 @@ For example, to get all pods:
 client.pods.get(function (err, pods) {
     console.log('pods:', pods);
 });
+```
+## Retrieving from Custom Collections
+
+Retrieving from custom k8 collections is enabled by using the `createCollection` functionality. 
+
+For example, to create a custom collection called "routes":
+```js
+client.routes = client.createCollection('routes');
+// then use the routes collection like any other
 ```
 
 # How to run the test cases
