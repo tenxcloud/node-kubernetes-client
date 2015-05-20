@@ -70,7 +70,10 @@ Retrieving from custom k8 collections is enabled by using the `createCollection`
 
 For example, to create a custom collection called "routes":
 ```js
-client.routes = client.createCollection('routes');
+var schema = null, //optional param
+innerCollections = null, // optional param
+options = { apiPrefix : 'api2' }; // optionally set a per-collection api prefix
+client.routes = client.createCollection('routes', schema, innerCollections, options);
 // then use the routes collection like any other
 ```
 
