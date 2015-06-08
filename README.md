@@ -48,7 +48,7 @@ Some optional params also exist on initialising the client.
 ```js
 {
     namespace:  'someNamespace', // filter all client requests by a namespace - default is no namespace
-    apiPrefix: 'someNamespace' // for APIs with a different API prefix to 'api'
+    timeout: 20000 // A timeout (in ms) for requests to k8 apis
 }
 ```
 
