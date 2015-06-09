@@ -43,6 +43,15 @@ var client = new Client({
 });
 ```
 
+### Optional params:
+Some optional params also exist on initialising the client. 
+```js
+{
+    namespace:  'someNamespace', // filter all client requests by a namespace - default is no namespace
+    timeout: 20000 // A timeout (in ms) for requests to k8 apis
+}
+```
+
 ## Getting from pods
 
 Paging is accomplished automatically. For example, a request for `pods` will
@@ -54,6 +63,18 @@ For example, to get all pods:
 client.pods.get(function (err, pods) {
     console.log('pods:', pods);
 });
+```
+## Retrieving from Custom Collections
+
+Retrieving from custom k8 collections is enabled by using the `createCollection` functionality. 
+
+For example, to create a custom collection called "routes":
+```js
+var schema = null, //optional param
+innerCollections = null, // optional param
+options = { apiPrefix : 'api2' }; // optionally set a per-collection api prefix
+client.routes = client.createCollection('routes', schema, innerCollections, options);
+// then use the routes collection like any other
 ```
 
 # How to run the test cases
