@@ -37,7 +37,7 @@ var Client = require('node-kubernetes-client');
 
 var client = new Client({
     host:  'xx.xx.xx.xx',
-    protocol: 'https:',
+    protocol: 'https',
     version: 'v1beta2',
     token: 'XYZ'
 });
