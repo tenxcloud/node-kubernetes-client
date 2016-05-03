@@ -18,7 +18,7 @@
     "docker"
   ],
   "author": "huangqg",
-  "license": "BSD",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/tenxcloud/node-kubernetes-client/issues"
   },
