@@ -19,7 +19,7 @@ describe('Test k8s pods API', function() {
   });
 
   it('should return the pods list', function(done) {
-    client.pods.getBy({"namespace": config.namespace}, function (err, podsArr) {
+    client.pods.getBy({"namespace": config.namespace || "default"}, function (err, podsArr) {
       if (!err) {
         console.log('pods: ' + JSON.stringify(podsArr));
         pods = podsArr.items;

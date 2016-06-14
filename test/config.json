@@ -3,10 +3,8 @@
     "protocol": "https",
     "host": "<ip>:<port>",
     "version": "v1beta1",
-    "token": "<token>"
-    //, "namespace": "default",
-    //, "timeout": 20000
-    //, "reqOptions": {"proxy": "http://x.x.x.x:xxxx/"}
+    "token": "<token>",
+    "reqOptions": {}
   },
   "pattern" : "test-*.js",
   "skip" : []
