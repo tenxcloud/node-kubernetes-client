@@ -7,18 +7,19 @@
 var should = require('should');
 var assert = require('assert');
 var fs = require('fs');
-var Client = require('../../../kubernetes/api');
+var Client = require('../');
+var config = require('./config.json');
 
 describe('Test k8s pods API', function() {
   this.timeout(20000);
   var client;
   var pods, podId;
   beforeEach(function() {
-    client = new Client(require('./config.json').k8s);
+    client = new Client(config.k8s);
   });
 
   it('should return the pods list', function(done) {
-    client.pods.getBy({"namespace": "default"}, function (err, podsArr) {
+    client.pods.getBy({"namespace": config.namespace || "default"}, function (err, podsArr) {
       if (!err) {
         console.log('pods: ' + JSON.stringify(podsArr));
         pods = podsArr.items;

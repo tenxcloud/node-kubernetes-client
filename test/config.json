@@ -3,7 +3,8 @@
     "protocol": "https",
     "host": "<ip>:<port>",
     "version": "v1beta1",
-    "token": "<token>"
+    "token": "<token>",
+    "reqOptions": {}
   },
   "pattern" : "test-*.js",
   "skip" : []

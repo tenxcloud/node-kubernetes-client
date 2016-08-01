@@ -49,6 +49,7 @@ Some optional params also exist on initialising the client.
 {
     namespace:  'someNamespace', // filter all client requests by a namespace - default is no namespace
     timeout: 20000 // A timeout (in ms) for requests to k8 apis
+    reqOptions: {} // array of options used to override the npm request module for this client proxy, auth, etc.
 }
 ```
 
