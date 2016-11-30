@@ -78,6 +78,58 @@ client.routes = client.createCollection('routes', schema, innerCollections, opti
 // then use the routes collection like any other
 ```
 
+## Custom Collection for k8s deployments
+
+```js
+client = new Client({
+  host:  'xx.xx.xx.xx',
+  protocol: 'https',
+  version: 'extensions/v1beta1',
+  token: 'XYZ',
+  namespace:  'mynamespace',
+  reqOptions: {proxy: configLocation.proxy || null},
+  timeout: 20000 
+});
+// add deployments to the api
+client.deployments = client.createCollection('deployments', null, null, { apiPrefix : 'apis' });
+
+var deploymentJSON = {
+          "apiVersion": "extensions/v1beta1",
+          "kind": "Deployment",
+          ...
+          }
+
+// then use the deployments collection like any other
+client.deployments.get(deploymentJSON.metadata.name, function (err, data) {
+  if (err && err.statusCode != 404) {
+    //something is wrong, bail
+    console.log("error checking for deployment:", err);
+    return;
+  } else if (err && err.statusCode == 404) {
+    //create if not found
+    client.deployments.create(deploymentJSON, function (err, data) {
+      if (err) {
+        console.log("error updating deployment:", err);
+        return;
+      } else {
+        console.log("deployment created:", deploymentJSON.metadata.name);
+        return;
+      }
+    });
+  } else {
+    //update since it did not exist
+    client.deployments.update(deploymentJSON.metadata.name, deploymentJSON, function (err, data) {
+      if (err) {
+        console.log("error updating deployment:", err);
+        return;
+      }
+      console.log("deployment updated:", deploymentJSON.metadata.name);
+      return;
+    }); 
+  }
+});
+```
+
 # How to run the test cases
 ## install mocha
 ```js
