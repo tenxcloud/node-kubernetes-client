@@ -36,10 +36,12 @@ expires, the login info will be used to acquire a new token.
 var Client = require('node-kubernetes-client');
 
 var client = new Client({
-    host:  'xx.xx.xx.xx',
+    host:  'xx.xx.xx.xx:[port]',
     protocol: 'https',
     version: 'v1beta2',
-    token: 'XYZ'
+    token: 'XYZ',
+    namespace:  'someNamespace', // filter all client requests by a namespace - default is k8s standard namespace
+    timeout: 20000 // A timeout (in ms) for requests to k8 apis
 });
 ```
 
@@ -47,8 +49,6 @@ var client = new Client({
 Some optional params also exist on initialising the client. 
 ```js
 {
-    namespace:  'someNamespace', // filter all client requests by a namespace - default is no namespace
-    timeout: 20000 // A timeout (in ms) for requests to k8 apis
     reqOptions: {} // array of options used to override the npm request module for this client proxy, auth, etc.
 }
 ```
