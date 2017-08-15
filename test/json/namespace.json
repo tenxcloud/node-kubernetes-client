@@ -1,6 +1,6 @@
 {
-  "apiVersion": "v1beta2",
-  "labels": {
+  "apiVersion": "v1",
+  "metadata": {
     "name": "myspace2"
   },
   "kind": "Namespace",

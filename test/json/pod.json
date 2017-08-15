@@ -1,38 +1,24 @@
 {
   "kind": "Pod",
-  "id": "ubuntu1",
-  "apiVersion": "v1beta2",
+  "id": "busybox",
+  "apiVersion": "v1",
   "namespace": "default",
-  "labels": {
-    "name": "ubuntu1"
+  "metadata": {
+    "name": "busybox"
   },
-  "desiredState": {
-    "manifest": {
-      "apiVersion": "v1beta2",
-      "volumes": null,
-      "containers": [
-        {
-          "name": "ubuntu1",
-          "image": "tutum/ubuntu:trusty",
-          "ports": [
-            {
-              "containerPort": 22,
-              "protocol": "TCP",
-              "hostPort": 34567
-            }
-          ],
-          "env": [
-            {
-              "name": "ROOT_PASS",
-              "value": "tenxcloud"
-            }
-          ]
-        }
-      ],
-      "restartPolicy": {
-        "OnFailure": {}
-      },
-      "dnsPolicy": "ClusterFirst"
-    }
+  "spec": {
+    "volumes": null,
+    "containers": [
+      {
+        "name": "busybox",
+        "image": "busybox",
+        "ports": [
+          {
+            "containerPort": 22,
+            "protocol": "TCP"
+          }
+        ]
+      }
+    ]
   }
 }

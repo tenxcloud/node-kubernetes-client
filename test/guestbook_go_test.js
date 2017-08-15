@@ -7,7 +7,7 @@
 
 var assert = require('assert');
 var fs = require('fs');
-var Client = require('../../../kubernetes/api');
+var Client = require('../');
   var client;
   client = new Client(require('./config.json').k8s);
   console.log('creating redis-master-controller');

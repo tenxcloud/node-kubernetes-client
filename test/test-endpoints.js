@@ -6,7 +6,7 @@
 
 var should = require('should');
 var assert = require('assert');
-var Client = require('../../../kubernetes/api');
+var Client = require('../');
 var fs = require('fs');
 
 describe('Test k8s endpoints API', function() {
