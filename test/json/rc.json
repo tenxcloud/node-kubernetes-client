@@ -1,11 +1,7 @@
 {
     "kind": "ReplicationController",
     "id": "guestbook-controller",
-    "uid": "0ddc6841-cfaf-11e4-94ea-52546d69a10d",
-    "creationTimestamp": "2015-03-21T17:45:48+08:00",
-    "selfLink": "/api/v1beta1/replicationControllers/guestbook-controller?namespace=default",
-    "resourceVersion": 54819,
-    "apiVersion": "v1beta1",
+    "apiVersion": "v1",
     "namespace": "default",
     "desiredState": {
         "replicas": 1,
@@ -15,7 +11,7 @@
         "podTemplate": {
             "desiredState": {
                 "manifest": {
-                    "version": "v1beta1",
+                    "version": "v1",
                     "id": "",
                     "volumes": null,
                     "containers": [
@@ -43,20 +39,6 @@
             },
             "labels": {
                 "name": "guestbook"
-            }
-        }
-    },
-    "currentState": {
-        "replicas": 1,
-        "podTemplate": {
-            "desiredState": {
-                "manifest": {
-                    "version": "",
-                    "id": "",
-                    "volumes": null,
-                    "containers": null,
-                    "restartPolicy": {}
-                }
             }
         }
     },

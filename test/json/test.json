@@ -1,6 +1,6 @@
 {
     "id": "mywordpress6",
-    "apiVersion": "v1beta1",
+    "apiVersion": "v1",
     "kind": "ReplicationController",
     "desiredState": {
         "replicas": 1,
@@ -11,7 +11,7 @@
             "desiredState": {
                 "manifest": {
                     "id": "mywordpress3",
-                    "version": "v1beta1",
+                    "version": "v1",
                     "containers": [
                         {
                             "name": "mywordpress6",

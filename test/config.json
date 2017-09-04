@@ -1,10 +1,10 @@
 {
   "k8s": {
-    "protocol": "https",
-    "host": "<ip>:<port>",
-    "version": "v1beta1",
-    "token": "<token>",
-    "reqOptions": {}
+    "protocol": "http",
+    "host": "127.0.0.1:8001",
+    "version": "v1",
+    "reqOptions": {},
+    "namespace": "default"
   },
   "pattern" : "test-*.js",
   "skip" : []

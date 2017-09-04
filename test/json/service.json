@@ -3,20 +3,20 @@
     "kind": "Service",
     "metadata": {
         "labels": {
-            "service": "mywordpress"
+            "service": "redis"
         },
-        "name": "mywordpress"
+        "name": "redis"
     },
     "spec": {
         "ports": [
             {
-                "port": 3000,
+                "port": 80,
                 "protocol": "TCP",
                 "targetPort": 80
             }
         ],
         "selector": {
-            "name": "mywordpress"
+            "service": "redis"
         },
         "type": "ClusterIP"
     }

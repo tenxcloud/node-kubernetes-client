@@ -136,8 +136,10 @@ client.deployments.get(deploymentJSON.metadata.name, function (err, data) {
   npm install mocha
 ```
 ## run testcase
-```js
-  mocha test-pods.js
+```bash
+  minikube start
+  kubectl proxy
+  mocha test/test-*
 ```
 The results will be output to test/results/ directory with formatted JSON.
 

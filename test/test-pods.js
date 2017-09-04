@@ -1,100 +1,59 @@
 /**
- * test kubernetes pods
+ * test kubernetes minions
  * @author huangqg
- * @date 2015-03-18
+ * @date 2015-03-19
  */
 
 var should = require('should');
 var assert = require('assert');
-var fs = require('fs');
 var Client = require('../');
-var config = require('./config.json');
+var fs = require('fs');
+var testData = require('./json/pod.json');
 
-describe('Test k8s pods API', function() {
-  this.timeout(20000);
+describe('Test k8s namespaces API', function() {
+  this.timeout(5000);
   var client;
-  var pods, podId;
   beforeEach(function() {
-    client = new Client(config.k8s);
+    client = new Client(require('./config.json').k8s);
   });
 
-  it('should return the pods list', function(done) {
-    client.pods.getBy({"namespace": config.namespace || "default"}, function (err, podsArr) {
-      if (!err) {
-        console.log('pods: ' + JSON.stringify(podsArr));
-        pods = podsArr.items;
-        // output results
-        fs.writeFile("results/pods.json", JSON.stringify(podsArr, null, 4), function(err) {
-          if(err) {
-            console.log(err);
-          }
-          console.log("The file was saved!");
-          done();
-        });
-      } else {
-        console.log(err);
-        assert(false);
-      }
+  it('should create a pod', function(done) {
+    client.pods.create(testData, function (err, data) {
+      assert(err == null, JSON.stringify(err));
+      data.should.be.an.instanceOf(Object).and.have.properties(['kind', 'apiVersion', 'metadata']);
+      data.metadata.name.should.be.equal(testData.metadata.name);
+      done();
+    });
+  });
+  
+  it('should return the list of pods', function(done) {
+    client.pods.get(function (err, data) {
+      assert(err == null);
+      data.should.be.an.instanceOf(Array)
+      data[0].should.be.an.instanceOf(Object).and.have.properties(['kind', 'apiVersion', 'metadata', 'items']);
+      data[0].items.should.be.an.instanceOf(Array)
+      data[0].kind.should.be.equal('PodList');
+      done();
     });
   });
 
   it('should return the pod with specified id', function(done) {
-    client.pods.get(pods[0].id, function (err, pod) {
-      if (!err) {
-        console.log('pods ' + JSON.stringify(pod));
-        // output results
-        fs.writeFile("results/pod.json", JSON.stringify(pod, null, 4), function(err) {
-          if(err) {
-            console.log(err);
-          }
-          console.log("The file was saved!");
-          done();
-        });
-      } else {
-        console.log(err);
-        assert(false);
-      }
+    var nsId = testData.metadata.name;
+    client.pods.get(nsId, function (err, data) {
+      assert(err == null);
+      data.should.be.an.instanceOf(Object).and.have.properties(['kind', 'apiVersion', 'metadata']);
+      data.metadata.name.should.be.equal(testData.metadata.name);
+      done();
     });
   });
-
-  /**
-  it('should create a pod', function(done) {
-    client.pods.create(require('./json/pod.json'), function (err, pod) {
-      if (!err) {
-        console.log('pod ' + JSON.stringify(pod));
-        podId = pod.id;
-        done();
-      } else {
-        console.log(err);
-        assert(false);
-      }
+  
+  it('should delete the pod with specified id', function(done) {
+    client.pods.delete(testData.metadata.name, function (err, data) {
+      assert(err == null);
+      data.should.be.an.instanceOf(Object).and.have.properties(['kind', 'apiVersion', 'metadata']);
+      data.metadata.name.should.be.equal(testData.metadata.name);
+      done();
     });
   });
-
-  it('should update a pod', function(done) {
-    client.pods.update(podId || 'ubuntu2', require('./json/pod.json'), function (err, pod) {
-      if (!err) {
-        console.log('pod ' + JSON.stringify(pod));
-        done();
-      } else {
-        console.log(err);
-        assert(false);
-      }
-    });
-  });
-
-
-  it('should delete the pod', function(done) {
-    client.pods.delete(podId || 'ubuntu2', function (err, pod) {
-      if (!err) {
-        console.log('pod ' + JSON.stringify(pod));
-        done();
-      } else {
-        console.log(err);
-        assert(false);
-      }
-    });
-  });
-**/
-
+  
 });

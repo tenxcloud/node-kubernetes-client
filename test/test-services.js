@@ -1,58 +1,59 @@
 /**
- * test kubernetes services
+ * test kubernetes minions
  * @author huangqg
- * @date 2015-03-18
+ * @date 2015-03-19
  */
 
 var should = require('should');
 var assert = require('assert');
+var Client = require('../');
 var fs = require('fs');
-var Client = require('../../../kubernetes/api');
+var testData = require('./json/service.json');
 
 describe('Test k8s services API', function() {
   this.timeout(5000);
   var client;
-  var services = [];
   beforeEach(function() {
     client = new Client(require('./config.json').k8s);
   });
 
-  it('should return the services list', function(done) {
-    client.services.get(function (err, servicesArr) {
-      if (!err) {
-        console.log('services: ' + JSON.stringify(servicesArr));
-        // output results
-        fs.writeFile("results/services.json", JSON.stringify(servicesArr, null, 4), function(err) {
-          if(err) {
-            console.log(err);
-          }
-          console.log("The file was saved!");
-          done();
-        });
-      } else {
-        console.log(err);
-        assert(false);
-      }
+  it('should create a service', function(done) {
+    client.services.create(testData, function (err, data) {
+      assert(err == null, JSON.stringify(err));
+      data.should.be.an.instanceOf(Object).and.have.properties(['kind', 'apiVersion', 'metadata']);
+      data.metadata.name.should.be.equal(testData.metadata.name);
+      done();
+    });
+  });
+  
+  it('should return the list of services', function(done) {
+    client.services.get(function (err, data) {
+      assert(err == null);
+      data.should.be.an.instanceOf(Array)
+      data[0].should.be.an.instanceOf(Object).and.have.properties(['kind', 'apiVersion', 'metadata', 'items']);
+      data[0].items.should.be.an.instanceOf(Array)
+      data[0].kind.should.be.equal('ServiceList');
+      done();
     });
   });
 
   it('should return the service with specified id', function(done) {
-    var serviceId = services[0].id;
-    client.services.get(serviceId, function (err, service) {
-      if (!err) {
-        console.log('services ' + JSON.stringify(service));
-        // output results
-        fs.writeFile("results/service.json", JSON.stringify(service, null, 4), function(err) {
-          if(err) {
-            console.log(err);
-          }
-          console.log("The file was saved!");
-          done();
-        });
-      } else {
-        console.log(err);
-        assert(false);
-      }
+    var nsId = testData.metadata.name;
+    client.services.get(nsId, function (err, data) {
+      assert(err == null);
+      data.should.be.an.instanceOf(Object).and.have.properties(['kind', 'apiVersion', 'metadata']);
+      data.metadata.name.should.be.equal(testData.metadata.name);
+      done();
     });
   });
+  
+  it('should delete the service with specified id', function(done) {
+    client.services.delete(testData.metadata.name, function (err, data) {
+      assert(err == null);
+      data.should.be.an.instanceOf(Object).and.have.properties(['kind', 'apiVersion', 'metadata', 'status']);
+      data.status.should.be.equal('Success');
+      done();
+    });
+  });
+  
 });
