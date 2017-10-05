@@ -78,6 +78,13 @@ client.routes = client.createCollection('routes', schema, innerCollections, opti
 // then use the routes collection like any other
 ```
 
+## createCollection options
+
+```
+apiPrefix: "apis" // Sets the prefix to the api path for the new collection.
+namespaced: true // Controls if paths include "/namespaces/${namespace}".
+```
+
 ## Custom Collection for k8s deployments
 
 ```js
